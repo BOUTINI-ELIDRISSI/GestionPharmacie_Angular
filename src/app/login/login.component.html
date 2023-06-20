@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  </head>
+  <body>
+    <div class="image"></div> 
+    <div class="forms">
+    <div class="center">
+      <h1>Login</h1>
+    
+    <form method="post">
+      <div class="txt_field">
+        <input type="text" [(ngModel)]="email" name="email" required>
+          <span></span>
+          <label>Adresse Email</label>
+      </div>
+      <div class="txt_field">
+        <input type="{{ showPassword ? 'text' : 'password' }}" [(ngModel)]="password" name="password" required>
+        <span></span>
+        <label>Mot de passe</label>
+      </div>
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" [(ngModel)]="showPassword" name="chack1" (change)="togglePasswordVisibility($event)"> Afficher le mot de passe
+      </label>
+    </div>
+    <br>
+    <input type="submit" (click)="search()" value="Connexion">
+    <p>{{error}}</p>
+    </form>
+  </div>
+</div>
+      <router-outlet></router-outlet>
+  </body>
+</html>
