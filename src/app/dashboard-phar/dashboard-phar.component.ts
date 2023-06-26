@@ -19,6 +19,7 @@ export class DashboardPharComponent implements OnInit{
     this.Med_Qte_Ex();
     this.Med_Date_Ex();
     this.NB_Entree_J();
+    this.allstock();
   }
 
   NB_Client() {
@@ -70,6 +71,19 @@ export class DashboardPharComponent implements OnInit{
         console.error('Error fetching nb_entree_j', error);
       }
     );
+  }
+
+  stock : any[] = [];
+  allstock(){
+    this.shared.allStock().subscribe(
+      (stock) => {
+        this.stock=stock;
+        console.log(' successfully!');
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    )
   }
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from './shared-service.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,16 +9,20 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit{
   title = 'GestionPharmacie';
-  constructor(public shared : SharedService, public router : Router){}
+  //user : any;
+  //us!: User ;
+  constructor( public shared : SharedService, public router : Router){}
   ngOnInit(): void {
-    if (this.shared.email =='' && this.shared.password==''){
+
+
+    /*if (this.us.nom =='' && this.us.password==''){
       this.router.navigate (['/login'])
     }
     else{
-      if(this.shared.role == "Administrateur")
-          this.router.navigate (['/menu'])
-       if(this.shared.role == "Pharmacien")
-          this.router.navigate (['/menu-phar'])
-    }
+      if(this.us.role == "Administrateur")
+          this.router.navigate (['/menu/'+ this.user])
+       if(this.us.role == "Pharmacien")
+          this.router.navigate (['/menu-phar/' + this.user])
+    }*/
   }
 }

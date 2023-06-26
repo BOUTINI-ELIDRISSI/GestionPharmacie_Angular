@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../shared-service.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-phar',
@@ -8,12 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu-phar.component.css']
 })
 export class MenuPharComponent implements OnInit{
-  constructor(public shared : SharedService, public router: Router){}
-  
+  constructor(public act:ActivatedRoute, public shared : SharedService, public router: Router){}
+  us : any;
   ngOnInit(): void {
-    if (this.shared.email =='' && this.shared.password==''){
+    //this.us = this.act.snapshot.paramMap.get('user');
+
+    /*if (this.us.email =='' && this.us.password==''){
       this.router.navigate (['/login'])
-    }
+    }*/
 
     const sidebar = document.querySelector(".sidebar");
     const closeBtn = document.querySelector("#btn");
@@ -43,6 +45,6 @@ export class MenuPharComponent implements OnInit{
   this.operationOptionsVisible = !this.operationOptionsVisible;
   }
   log_out(){
-    this.router.navigate (['/login'])
+    //this.router.navigate (['/login'])
   }
 }

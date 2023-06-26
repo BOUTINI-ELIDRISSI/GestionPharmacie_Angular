@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit{
   constructor(public shared : SharedService, public router: Router){}
-  user:any[] = []
+ // user:any[] = []
+ // us : any;
   //// employee
   employeeOptionsVisible: boolean = false;
 
@@ -25,10 +26,10 @@ toggleOperationOptions() {
 
 
   ngOnInit() {
-
-    if (this.shared.email =='' && this.shared.password==''){
+    /*this.us = this.act.snapshot.paramMap.get('user');
+    if (this.us.email =='' && this.us.password==''){
       this.router.navigate (['/login'])
-    }
+    }*/
 
     const sidebar = document.querySelector(".sidebar");
     const closeBtn = document.querySelector("#btn");
@@ -51,9 +52,7 @@ toggleOperationOptions() {
     }
   }
   log_out(){
-    this.router.navigate (['/login'])
+   // this.router.navigate (['/login'])
   }
-/*
 
-*/
 }

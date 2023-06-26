@@ -54,5 +54,49 @@
   </div>
 </div>
 </div>
+<br>
+<table>
+  <tr style="color: #0b159e;font-weight:500; font-size: 18px;">
+    <td style="position: relative;left: 60px;">Etat de stock</td>
+  </tr>
+  <tr>
+    <td style="position: relative;left: 40px; background-color: white; padding: 20px; border-radius: 10px;">
+        <!-- Seventh card -->
+        <table class="table table-hover text-center" >
+          <thead class="table-light">
+            <tr>
+              <th scope="col">Libelle</th>
+              <th scope="col">Date_expiration</th>
+              <th scope="col" >Fournisseur</th>
+              <th scope="col" >Qantité</th>
+              <th>Details</th>
+             
+            </tr>
+          </thead>
+          <tbody>
+           <tr *ngFor="let item of stock | slice:0:3" >
+            
+              <td>{{item.medicament_Libelle}}</td>
+              <td>{{item.date_expiration}}</td>
+              <td>{{item.fournisseur}}</td>
+              <td>{{item.qte}}</td>
+              <td> <span class="dtl"><img src="assets/images/about.png" alt=""></span> </td>
+            
+
+            <td>
+            
+            </td>
+           </tr>
+           <tr>
+           
+           </tr>
+          </tbody>
+        </table>
+
+        <!-- Seventh card -->
+    </td>
+  </tr>
+</table>
+
 </body>
 </html>

@@ -27,6 +27,9 @@ export class DashboardComponent implements OnInit{
     this.Med_Qte_Ex();
     this.Med_Date_Ex();
     this.NB_Entree_J();
+    this.allstock();
+
+    this.allCommands();
 
   }
   Vente_J(){
@@ -109,7 +112,32 @@ export class DashboardComponent implements OnInit{
       }
     );
   }
-  
+  /************************ Stock  ****************************/
+  stock : any[] = [];
+  allstock(){
+    this.shared.allStock().subscribe(
+      (stock) => {
+        this.stock=stock;
+        console.log(' successfully!');
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    )
+  }
+  //Commands
+  cmd: any[] = [];
+  allCommands(){
+    this.shared.allCommands().subscribe(
+      (cmd) => {
+        this.cmd=cmd;
+        console.log(' successfully!');
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    )
+  }
   
 }
 /*

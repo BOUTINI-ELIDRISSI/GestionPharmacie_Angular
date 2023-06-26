@@ -2,20 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-// Interfaced
-//Utilisateur Interface
-export interface User {
-  id : number;
-  nom : string
-  email: string;
-  mot_de_passe: string;
-  role: Role;
-}
-//Role interface
-export interface Role{
-  id : number;
-  nom : string;
-}
+
 
 @Injectable({
   providedIn: 'root'
@@ -26,20 +13,49 @@ export class SharedService {
   constructor(private http: HttpClient ) { 
     
   }
-  email='';
-  password = '';
-  role='';
+ 
   private apiUrl = 'http://localhost:8085/api/';
+  /***************************Role**************************** */
+  all_roles(){
+    return this.http.get<any[]>(this.apiUrl + "roles/read");
+  }
+  sreach_role(nom : string){
+    return this.http.get(this.apiUrl + "roles/findByNom?roleName="+nom);
+  }
+  save_role(rol : any){
+    return this.http.post(this.apiUrl+"roles/create", rol);
+  }
 
+  update_role(o : any){
+    return this.http.put(this.apiUrl+ "roles/update" , o)
+  }
+
+  delete_role(id:number){
+    return this.http.delete(this.apiUrl + "roles/"+id)
+  }
   /***************************Utilisateur************************/
   search_user(email : String){
     return this.http.get(this.apiUrl + "users/findbyEmail?email="+email);
   }
   allUsers(){
-    return this.http.get<any[]>(this.apiUrl + "users/read")
+    return this.http.get<any[]>(this.apiUrl + "users/read");
   }
-  
-    /***************************Dasboard************************/
+  search_nom(nom : string){
+    return this.http.get(this.apiUrl + "users/findbyNom?nom="+nom);
+  }
+  save_user(us : any)
+  {
+    return this.http.post(this.apiUrl+"users/create", us);
+  }
+
+  delete_user(id : number){
+    return this.http.delete(this.apiUrl + "users/"+id)
+  }
+
+  update_user(us : any){
+    return this.http.put(this.apiUrl + "users/update", us)
+  }
+  /******************************Dasboard************************/
 
   vente_J():Observable<string>{
     return this.http.get(this.apiUrl + "dashboard/Vente_J", { responseType: 'text' })
@@ -64,6 +80,42 @@ export class SharedService {
   }
   nb_Entree_J():Observable<number>{
     return this.http.get<number>(this.apiUrl + "dashboard/Nombre_Entrees_J")
+  }
+
+    /******************************Stock************************/
+  allStock(){
+      return this.http.get<any[]>(this.apiUrl + "stock/list_stock");
+  }
+
+      /******************************Commands************************/
+
+  allCommands() {
+    return this.http.get<any[]>(this.apiUrl + "cmd/read");
+
+  }
+
+      /******************************Lignes************************/
+
+  allligne(){
+    return this.http.get<any[]>(this.apiUrl + "lignes/read");
+
+  }
+
+
+  /***********************************Fournisseur************************/
+  allfournisseur(){
+    return this.http.get<any[]>(this.apiUrl + "fournisseurs/read");
+  }
+  save_fourni(o : any){
+    return this.http.post(this.apiUrl + "fournisseurs/create", o)
+  }
+  update_fourni(o : any) {
+    return this.http.put(this.apiUrl + "fournisseurs/update", o)
+
+  }
+  delete_fourni(id : number) {
+    return this.http.delete(this.apiUrl + "fournisseurs/"+ id)
+
   }
 
 }

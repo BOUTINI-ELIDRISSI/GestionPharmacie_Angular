@@ -10,6 +10,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MenuPharComponent } from './menu-phar/menu-phar.component';
 import { DashboardPharComponent } from './dashboard-phar/dashboard-phar.component';
+import { RoleComponent } from './role/role.component';
+import { UserComponent } from './user/user.component';
+import { FournisseurComponent } from './fournisseur/fournisseur.component';
+import { MedicamentComponent } from './medicament/medicament.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { DashboardPharComponent } from './dashboard-phar/dashboard-phar.componen
     MenuComponent,
     DashboardComponent,
     MenuPharComponent,
-    DashboardPharComponent
+    DashboardPharComponent,
+    RoleComponent,
+    UserComponent,
+    FournisseurComponent,
+    MedicamentComponent
   ],
   imports: [
     BrowserModule,

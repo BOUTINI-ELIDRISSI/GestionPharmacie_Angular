@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedService, User,Role } from '../shared-service.service';
+import { SharedService } from '../shared-service.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,9 +18,7 @@ export class LoginComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.shared.email = '';
-    this.shared.password = ''
-    this.shared.role = '';
+   
   }
   
   showPassword: boolean = false;
@@ -43,9 +41,7 @@ export class LoginComponent implements OnInit{
   signIn(): void {
     if (this.user && this.user.email !== null) { // Check if user is defined and email is not null
       if (this.user.mot_de_passe === this.password) {
-        this.shared.email = this.user.email;
-        this.shared.password = this.user.mot_de_passe;
-        this.shared.role = this.user.role.nom;
+        
         this.router.navigate(['/root']);
       } else {
         this.error = 'Le mot de passe est incorrect';
