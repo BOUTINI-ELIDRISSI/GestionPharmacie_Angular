@@ -118,3 +118,10 @@ body {
     font-size: 20px;
   }
   
+  hr{
+    margin: 10px 0;
+    background-color: #8b8888;
+    border: 0;
+    height: 1px;
+    width: 100%;
+}

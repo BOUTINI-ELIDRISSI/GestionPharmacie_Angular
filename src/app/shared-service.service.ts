@@ -78,9 +78,12 @@ export class SharedService {
   med_DATE_Ex():Observable<number>{
     return this.http.get<number>(this.apiUrl + "dashboard/Date_medicament_expire")
   }
+  
   nb_Entree_J():Observable<number>{
     return this.http.get<number>(this.apiUrl + "dashboard/Nombre_Entrees_J")
   }
+ 
+ 
 
     /******************************Stock************************/
   allStock(){
@@ -98,9 +101,10 @@ export class SharedService {
 
   allligne(){
     return this.http.get<any[]>(this.apiUrl + "lignes/read");
-
   }
-
+  ligne_by_med(libelle : string):Observable<any[]>{
+    return this.http.get<any[]>(this.apiUrl + "lignes/findbyMedicament?medicamentLibelle="+libelle);
+ }
 
   /***********************************Fournisseur************************/
   allfournisseur(){
@@ -117,5 +121,33 @@ export class SharedService {
     return this.http.delete(this.apiUrl + "fournisseurs/"+ id)
 
   }
+
+   /***********************************Medicament************************/
+   allmedicament(){
+    return this.http.get<any[]>(this.apiUrl + "medicaments/read");
+  }
+  save_medicament(o : any){
+    return this.http.post(this.apiUrl + "medicaments/create", o)
+  }
+  update_medicament(o : any) {
+    return this.http.put(this.apiUrl + "medicaments/update", o)
+
+  }
+  delete_medicament(id : number) {
+    return this.http.delete(this.apiUrl + "medicaments/"+ id)
+
+  }
+  
+  /***********************************Entree************************/
+  entree_by_med(libelle : string):Observable<any[]>{
+  return this.http.get<any[]>(this.apiUrl + "entree/findByMedicament?libelle="+libelle);
+  }
+
+  /***********************************Sortie************************/
+  sortie_by_med(libelle : string):Observable<any[]>{
+    return this.http.get<any[]>(this.apiUrl + "sorties/findbyMedicament?medicamentLibelle="+libelle);
+ }
+ 
+  
 
 }

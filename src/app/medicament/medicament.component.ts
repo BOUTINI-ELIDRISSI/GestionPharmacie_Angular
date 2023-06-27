@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../shared-service.service';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-medicament',
@@ -10,7 +11,21 @@ export class MedicamentComponent implements OnInit{
   modalVisible = false;
   modalVisible2 = false;
   modalVisible3 = false;
-
+  modalVisibleinfo = false;
+  allmed: any[]= [];
+  ajouter_med={
+    id: 0,
+    libelle: '',
+    description: '',
+    maladies: [],
+    ordonnance: true
+  }
+  maladie='';
+  maladie2='';
+  info_med:any;
+  update_med : any;
+  id_delete = 0;
+  libelle_delete = '';
   constructor(public shared:SharedService){
 
   }
@@ -19,18 +34,22 @@ export class MedicamentComponent implements OnInit{
     console.log("openModel is working")
     
   }
-  openModal2(us : any): void {
-    //this.update_user=us;
+  openModal2(med : any): void {
+    this.update_med = med;
     this.modalVisible2 = true;
-    //this.nom = nom;
     console.log("openModel for update is working")
     
   }
-  openModal3(id : number, nom:string): void {
+  openModal3(id : number, libelle:string): void {
     this.modalVisible3 = true;
     console.log("openModel of delete is working")
-   // this.id = id;
-   // this.name=nom;
+    this.id_delete = id;
+    this.libelle_delete=libelle;
+  }
+  openModalinfo(med : any){
+    this.modalVisibleinfo = true;
+    this.info_med = med;
+    console.log("openModel of info is working");
   }
   closeModal(): void {
     this.modalVisible = false;
@@ -47,8 +66,37 @@ export class MedicamentComponent implements OnInit{
     console.log("closeModal for delete is working")
 
   }
-  ngOnInit(): void {
-    
+  closeModalinfo(){
+    this.modalVisibleinfo = false;
+    console.log("closeModal for info is working")
+
   }
+  ngOnInit(): void {
+    this.shared.allmedicament().subscribe(
+      (allmed) => {
+        this.allmed = allmed;
+      },
+      (error) => {
+        console.error('Error fetching medicament data:', error);
+      }
+    )
+  }
+  ajouter_maladie(){
+
+  }
+  ajouter_maladie2(){
+
+  }
+  ajouter(){
+
+  }
+
+update(){
+
+}
+
+delete(){
+
+}
 
 }

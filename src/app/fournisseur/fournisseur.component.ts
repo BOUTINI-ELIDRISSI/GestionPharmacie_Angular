@@ -65,7 +65,7 @@ ngOnInit(): void {
       this.allfourni = allfourni;
     },
     (error) => {
-      console.error('Error fetching user data:', error);
+      console.error('Error fetching fournisseur data:', error);
     }
   )
 }

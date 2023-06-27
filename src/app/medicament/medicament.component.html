@@ -10,7 +10,7 @@
     </head>
     <body>
       <div class="text">Medicament</div>
-       
+       <hr>
         
           <div class="container">
             <button type="button" class="btn btn-outline-success" id="openModalBtn" (click)="openModal()"> Nouveau Medicament </button>
@@ -24,34 +24,50 @@
               <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #28b836;color: white;">
                Nouveau Medicament  
               </nav>        <hr>
-                <div class="name-field">
+                <div class="cont">
                     <table class="tbl">
                     <tr>
                         <td>Libelle</td> &nbsp;
-                        <td><input type="text" [(ngModel)]=""></td>
+                        <td><input type="text" [(ngModel)]="ajouter_med.libelle"></td>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <td> Email</td>&nbsp;
-                        <td><input  type="text" [(ngModel)]="us.email"></td>
+                        <td> Description</td>&nbsp;
+                        <td><textarea rows="4" cols="50" [(ngModel)]="ajouter_med.description" ></textarea></td>
                     </tr>
                     <tr>
-                        <td >Role</td>&nbsp;
+                        <td >maladies</td>&nbsp;
                        <td> 
-                        <select [(ngModel)]="us.role.id">
-                          <option *ngFor="let role of roles" [value]="role.id">{{role.nom}}</option>
-                        </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="text" [(ngModel)]="maladie"> &nbsp;&nbsp;<button type="button" class="btn btn-outline-success" (click)="ajouter_maladie()"> + </button> 
                       </td>
+                        
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       <td >Mot de passe</td>&nbsp;
-                        <td><input type="email" [(ngModel)]="us.mot_de_passe"></td>
+                       <td ><br>ordonnance</td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <td><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="option" id="option1" [value]="true" [(ngModel)]="ajouter_med.ordonnance">
+                          &nbsp;&nbsp;<label for="option1">Oui</label>
+                          &nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="option" id="option2" [value]="false" [(ngModel)]="ajouter_med.ordonnance">
+                          &nbsp;&nbsp; <label for="option2">Non</label>
+                        </td>
                     </tr>
-                   
+                   <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <br>
+                      <select multiple>
+                        <option value="" style="color: blue;">Maladies : </option>
+                        <option *ngFor="let item of ajouter_med.maladies" [value]="item">{{ item }}</option>
+                      </select>
+                    </td>
+                   </tr>
                 </table>
                 <br>
-                <button type="button" class="btn btn-outline-success" (click)="ajouter()"> Enregistrer </button>
+                <button type="button" class="btn btn-outline-success" style="position: relative;left: 800px;bottom: 50px;" (click)="ajouter()"> Enregistrer </button>
       
                 </div>
               
@@ -60,30 +76,57 @@
         <!-- update Modal content -->
           <div *ngIf="modalVisible2" id="myModal2" class="modal">
             <!-- Modal content -->
-            <div class="modal-content2">
+            <div class="modal-content">
               <span (click)="closeModal2()" class="close">&times;</span>
-              <br><br>
+              
               <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #28b836;color: white;">
-               Changer le role
+               Modifier
               </nav>        <hr>
-                <div class="name-field">
+                <div class="cont">
                     <table class="tbl">
+                      <tr>
+                        <td>Libelle</td> &nbsp;
+                        <td><input type="text" [(ngModel)]="update_med.libelle" disabled></td>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <td> Description</td>&nbsp;
+                        <td><textarea rows="4" cols="50" [(ngModel)]="update_med.description" ></textarea></td>
+                    </tr>
                     <tr>
-                      <td>Nom</td> &nbsp;
-                        <td><input type="text" [(ngModel)]="update_user.nom" disabled></td>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <td >Role</td>&nbsp;
+                        <td>maladies</td>&nbsp;
                        <td> 
-                        <select [(ngModel)]="update_user.role.id">
-                          <option *ngFor="let role of roles" [value]="role.id">{{role.nom}}</option>
+                        <input type="text" [(ngModel)]="maladie2">&nbsp;&nbsp;&nbsp; <button type="button" class="btn btn-outline-success" (click)="ajouter_maladie2()"> + </button> 
+                       
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      </td><br>
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       <td ><br>ordonnance</td>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <td><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="option" id="option1" [value]="true" [(ngModel)]="update_med.ordonnance">
+                          &nbsp;&nbsp;<label for="option1">Oui</label>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="option" id="option2" [value]="false" [(ngModel)]="update_med.ordonnance">
+                          &nbsp;&nbsp;<label for="option2">Non</label>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td>
+                         <br>
+                         <select multiple>
+                          <option value="" style="color: blue;">Maladies : </option>
+                          <option *ngFor="let item of update_med.maladies" [value]="item">{{ item }}</option>
                         </select>
-                       </td>
+                      </td>
+                    </tr>
                    
                 </table>
                 <br>
-                <button type="button" class="btn btn-outline-success" (click)="update()"> Modifier </button>
+                <button type="button" class="btn btn-outline-success" style="position: relative;left: 800px;bottom: 50px;" (click)="update()"> Modifier </button>
                 
                 </div>
               
@@ -103,7 +146,7 @@
                Supprimer
               </nav>        <hr>
                 <div class="name-field">
-                    <p>Voulez-vous vraiment supprimer l'utilisateur {{name}}</p>
+                    <p>Voulez-vous vraiment supprimer le medicament {{libelle_delete}}</p>
                 <br>
                 <button type="button" class="btn btn-outline-success" (click)="delete()"> Supprimer </button>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -116,30 +159,56 @@
         <!-- the end of delete Modal content -->
           
       
+         <!--  info Modal content -->
+         <div *ngIf="modalVisibleinfo" id="myModal3" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content3">
+            <span (click)="closeModalinfo()" class="close">&times;</span>
+            <br><br>
+            
+            <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #28b836;color: white;">
+             Information
+            </nav>        <hr>
+              <div class="name-field">
+                  <p> <span style="color: blue;font-weight: 500;">Description </span><br>
+                  <span style="margin-left: 50px;">{{info_med.description}}</span></p>
+                   <span style="color: blue;font-weight: 500;">Maladies </span>
+                    <ul *ngFor="let item of info_med.maladies">
+                      <li>{{item}}</li>
+                    </ul>
+                  <p> <span style="color: blue;font-weight: 500;">Ordonnance </span> <br><span style="margin-left: 50px;"> &nbsp;&nbsp;&nbsp;&nbsp; {{info_med.ordonnance}} </span>
+                  </p>
+             
+              </div>
+            
+          </div>
+        </div>
 
+      <!-- the end of info Modal content -->
 
 
             <table class="table table-hover text-center">
               <thead class="table-light">
                 <tr>
-                  <th scope="col">Nom</th>
-                  <th scope="col">Adresse email </th>
-                  <th scope="col" >Role</th>
-                  <th scope="col" >Mot de passe</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">Libelle </th>
+                  <th scope="col" >Ordonnance</th>
                   <th>Details</th>
-                 
+                  <td> 
+                  </td>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of users">
-                  <td>{{item.nom}}</td>
-                  <td>{{item.email}}</td>
-                  <td>{{item.role.nom}}</td>
-                  <td>{{item.mot_de_passe}}</td>
+                <tr *ngFor="let item of allmed">
+                  <td>{{item.id}}</td>
+                  <td>{{item.libelle}}</td>
+                  <td>{{item.ordonnance}}</td>
                   <td> 
-                    
-                    <span (click)="openModal3(item.id, item.nom)" ><img src="assets/images/delete.png" alt=""></span>
-                    <span  id="openModalBtn2" (click)="openModal2(item)"><img src="assets/images/update.png" alt=""></span>
+                    <span [routerLink]="['/operations', item.libelle]" ><img src="assets/images/arrows.png" alt=""></span>
+                    <span (click)="openModalinfo(item)"><img src="assets/images/about.png" alt=""></span>
+                    <span  id="openModalBtn2" (click)="openModal2(item)"><img src="assets/images/implement.png" alt=""></span>
+
+                    <span (click)="openModal3(item.id, item.libelle)" ><img src="assets/images/delete.png" alt=""></span>
 
                   </td>
               </tr>

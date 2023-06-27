@@ -1,0 +1,93 @@
+<html>
+    <head>
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<title>Gestion des Entree</title>
+    </head>
+    <body>
+      <div class="text">Medicament > Operations</div>
+      <hr>
+       <div class="titre">Medicament  : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{libelle}}&nbsp;&nbsp;&nbsp;&nbsp;</div>
+      <div class="container">
+        <p>Entrees</p>
+            <table class="table table-hover text-center">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Date d'entree</th>
+                  <th scope="col" >Date d'expiration</th>
+                  <th scope="col" >Quantite</th>
+                  <th scope="col" >Prix Achat</th>
+                  <th scope="col" >Prix Vente</th>
+                  <th scope="col" >Fournisseur</th>
+                  <th scope="col" >Utilisateur</th>
+                 
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of allEntree">
+                  <td>{{item.id}}</td>
+                  <td>{{item.date_entree | date:'yyyy-MM-dd'}}</td>
+                  <td>{{item.date_expiration | date:'yyyy-MM-dd'}}</td>
+                  <td>{{item.quantite}}</td>
+                  <td>{{item.prix_achat}}</td>
+                  <td>{{item.prix_vente}}</td>
+                  <td>{{item.fournisseur.nom}}</td>
+                  <td>{{item.utilisateur.nom}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <br>
+          <div class="container">
+            <p>Sorties</p>
+                <table class="table table-hover text-center">
+                  <thead class="table-light">
+                    <tr>
+                      <th scope="col" >Code Facture</th>
+                      <th scope="col">Date Facture</th>
+                      <th scope="col" >Quantite</th>
+                      <th scope="col" >Utilisateur</th>
+                    </tr>
+                  </thead>  
+                  <tbody>
+                    <tr *ngFor="let item of allSortie">
+                      <td>{{item.facture.code}}</td>
+                      <td>{{item.facture.date_Fact | date:'yyyy-MM-dd'}}</td>
+                      <td>{{item.quantite}}</td>
+                      <td>{{item.facture.utilisateur.nom}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <br>
+              <div class="container">
+                <p>Sorties en Ligne</p>
+                    <table class="table table-hover text-center">
+                      <thead class="table-light">
+                        <tr>
+                          <th scope="col">Code Command</th>
+                          <th scope="col">Client</th>
+                          <th scope="col" >Quantite</th>
+                          <th scope="col" >Date Commande</th>
+                          <th scope="col" >Utilisateur</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of allLigne">
+                          <td>{{item.id.cmdcode}}</td>
+                          <td>{{item.commande.client.nom}}</td>
+                          <td>{{item.quantite}}</td>
+                          <td>{{item.commande.date_Cmd | date:'yyyy-MM-dd'}}</td>
+                          <td>{{item.commande.utilisateur.nom}}</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <br> <br>
+        </body>
+</html>

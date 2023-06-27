@@ -14,6 +14,7 @@ import { RoleComponent } from './role/role.component';
 import { UserComponent } from './user/user.component';
 import { FournisseurComponent } from './fournisseur/fournisseur.component';
 import { MedicamentComponent } from './medicament/medicament.component';
+import { OperationsComponent } from './operations/operations.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MedicamentComponent } from './medicament/medicament.component';
     RoleComponent,
     UserComponent,
     FournisseurComponent,
-    MedicamentComponent
+    MedicamentComponent,
+    OperationsComponent
   ],
   imports: [
     BrowserModule,

@@ -16,6 +16,13 @@ body {
     font-weight: 500;
     margin: 18px;
   }
+  hr{
+    margin: 10px 0;
+    background-color: #8b8888;
+    border: 0;
+    height: 1px;
+    width: 100%;
+}
   .dashboard-container {
     padding:0px;
     margin: 0px;

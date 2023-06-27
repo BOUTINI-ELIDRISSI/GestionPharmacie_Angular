@@ -58,6 +58,9 @@ body {
       width: 30%; /* 80% width */
       height: auto;
     }
+    .modal-content .cont{
+      margin-left: 20px;
+    }
     .close {
       color: #aaa;
       float: right;
@@ -87,12 +90,12 @@ body {
     
     }
     hr{
-        margin: 10px 0;
-        background-color: #ccc;
-        border: 0;
-        height: 1px;
-        width: 100%;
-    }
+      margin: 10px 0;
+      background-color: #8b8888;
+      border: 0;
+      height: 1px;
+      width: 100%;
+  }
     img{
       width: 100%;
       max-width: 30px;
@@ -117,4 +120,9 @@ body {
     .btn #id{
       font-size: 20px;
     }
-    
+    select{
+      width: 200px;
+    }
+    nav{
+      color: blue;
+    }
