@@ -11,19 +11,32 @@ import { OperationsComponent } from './operations/operations.component';
 import { FournisseurComponent } from './fournisseur/fournisseur.component';
 import { RoleComponent } from './role/role.component';
 import { MedicamentComponent } from './medicament/medicament.component';
+import { AchatComponent } from './achat/achat.component';
+import { VenteComponent } from './vente/vente.component';
+import { FactureComponent } from './facture/facture.component';
+import { CommaExpr } from '@angular/compiler';
+import { CommandeComponent } from './commande/commande.component';
+import { ClientComponent } from './client/client.component';
 
 const routes: Routes = [
+  
+  { path: '',redirectTo: '/dashboard',pathMatch: 'full', },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'user', component: UserComponent },
+  { path: 'role', component: RoleComponent },
   {path:'login', component: LoginComponent},
-  {path:'menu', component: MenuComponent},
-  {path:'dashboard', component: DashboardComponent},
   {path:'menu-phar', component: MenuPharComponent},
   {path:'dashboard-phar', component: DashboardPharComponent},
-  {path:'user', component:UserComponent},
   {path:'operations/:libelle', component: OperationsComponent},
   {path:'medicament', component: MedicamentComponent},
   {path: 'fournisseur', component : FournisseurComponent},
   {path : 'role', component:RoleComponent},
-  {path:'root', component: AppComponent}
+  {path: 'achat', component:AchatComponent},
+  {path: 'vente', component:VenteComponent},
+  {path: 'facture', component:FactureComponent},
+  {path: 'commande', component:CommandeComponent},
+  {path: 'client', component:ClientComponent}
+
   
 ];
 

@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background-color:#cdf3d0;
+
+  }
+  
+  .menu {
+    width: 0px;
+    margin: 0;
+    padding: 0;
+    /* Additional styling for the menu component */
+  }
+  
+  .content {
+    flex-grow: 1;
+    margin: 0;
+    margin-left: 80px;
+    max-width: 100%;
+    width: auto;
+    /* Additional styling for the content area */
+  }
+  

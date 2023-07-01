@@ -51,6 +51,11 @@ toggleOperationOptions() {
       }
     }
   }
+  go_to_user(){
+    this.router.navigate (['/user'])
+  }
+
+
   log_out(){
    // this.router.navigate (['/login'])
   }

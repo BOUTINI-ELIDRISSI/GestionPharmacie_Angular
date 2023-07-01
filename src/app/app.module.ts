@@ -15,6 +15,11 @@ import { UserComponent } from './user/user.component';
 import { FournisseurComponent } from './fournisseur/fournisseur.component';
 import { MedicamentComponent } from './medicament/medicament.component';
 import { OperationsComponent } from './operations/operations.component';
+import { AchatComponent } from './achat/achat.component';
+import { VenteComponent } from './vente/vente.component';
+import { CommandeComponent } from './commande/commande.component';
+import { FactureComponent } from './facture/facture.component';
+import { ClientComponent } from './client/client.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,13 @@ import { OperationsComponent } from './operations/operations.component';
     UserComponent,
     FournisseurComponent,
     MedicamentComponent,
-    OperationsComponent
+    OperationsComponent,
+    AchatComponent,
+    VenteComponent,
+    CommandeComponent,
+    FactureComponent,
+    ClientComponent,
+    
   ],
   imports: [
     BrowserModule,

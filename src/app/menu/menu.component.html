@@ -13,9 +13,9 @@
     </div>
     <ul class="nav-list">
       <li>
-        <a href="#">
+        <a routerLink="/dashboard">
           <i class="bx bx-grid-alt"></i>
-          <span class="link_name" routerLink="dashboard">Dashboard</span>
+          <span class="link_name" >Dashboard</span>
           
         </a>
         <span class="tooltip">Dashboard</span>
@@ -34,47 +34,47 @@
         <span class="tooltip">Opérations</span>
         <ul>
           <li *ngIf="operationOptionsVisible">
-            <a href="#">
+            <a routerLink="/achat">
               <i></i><i></i>
               <span class="link_name">
-                <div class="under" routerLink="#">Achat</div></span>
+                <div class="under">Achat</div></span>
             </a>
           </li>
           <li *ngIf="operationOptionsVisible">
-            <a href="#">
+            <a routerLink="/vente">
               <i ></i><i></i>
               <span class="link_name">
-                <div class="under" routerLink="#">Vente</div></span>  
+                <div class="under" >Vente</div></span>  
             </a>
           </li>
         </ul>
       </li>
             <!--******************************************-->
       <li>
-        <a href="#">
+        <a routerLink="/commande">
           <i class="bx bx-cart-alt"></i>
-          <span class="link_name" routerLink="#">Commande</span>
+          <span class="link_name" >Commande</span>
         </a>
         <span class="tooltip">Commande</span>
       </li>
       <li>
-        <a href="#">
+        <a routerLink="/facture">
           <i class="bx bx-book-content"></i>
-          <span class="link_name" routerLink="#">Facture</span>
+          <span class="link_name" >Facture</span>
         </a>
         <span class="tooltip">Facture</span>
       </li>
       <li>
-        <a href="#">
+        <a routerLink="/fournisseur">
           <i class="bx bx-group"></i>
-          <span class="link_name" routerLink="fournisseur">Fournisseur</span>
+          <span class="link_name" >Fournisseur</span>
         </a>
         <span class="tooltip">Fournisseur</span>
       </li>
       <li>
-        <a href="#">
+        <a routerLink="/medicament">
           <i class="bx bx-injection"></i>
-          <span class="link_name" routerLink="medicament">Medicament</span>
+          <span class="link_name" >Medicament</span>
         </a>
         <span class="tooltip">Medicament</span>
       </li>
@@ -83,9 +83,9 @@
       
       <!--******************************************-->
       <li>
-        <a href="#">
+        <a routerLink="/client" >
           <i class="bx bx-user"></i>
-          <span class="link_name" routerLink="">Client</span>
+          <span class="link_name" >Client</span>
         </a>
         <span class="tooltip">Client</span>
       </li>
@@ -101,17 +101,17 @@
         <span class="tooltip">Employee</span>
         <ul>
           <li *ngIf="employeeOptionsVisible">
-            <a href="#">
+            <a  routerLink="/user">
               <i></i><i></i>
               <span class="link_name">
-                <div class="under" routerLink="user">Utilisateur</div> </span>
+                <div class="under" >Utilisateur</div> </span>
             </a>
           </li>
           <li *ngIf="employeeOptionsVisible">
-            <a href="#">
+            <a routerLink="/role">
               <i ></i><i></i>
               <span class="link_name">
-                <div class="under" routerLink="role">Role</div></span>  
+                <div class="under">Role</div></span>  
             </a>
           </li>
         </ul>
