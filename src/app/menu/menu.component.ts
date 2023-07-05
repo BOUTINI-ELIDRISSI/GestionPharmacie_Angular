@@ -26,10 +26,7 @@ toggleOperationOptions() {
 
 
   ngOnInit() {
-    /*this.us = this.act.snapshot.paramMap.get('user');
-    if (this.us.email =='' && this.us.password==''){
-      this.router.navigate (['/login'])
-    }*/
+  
 
     const sidebar = document.querySelector(".sidebar");
     const closeBtn = document.querySelector("#btn");
@@ -51,13 +48,11 @@ toggleOperationOptions() {
       }
     }
   }
-  go_to_user(){
-    this.router.navigate (['/user'])
-  }
+
 
 
   log_out(){
-   // this.router.navigate (['/login'])
+   this.router.navigate (['/login'])
   }
 
 }

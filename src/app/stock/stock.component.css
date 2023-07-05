@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+/***********************************************/
+body {
+    padding: 0;
+    margin: 0;
+    background-color:#cdf3d0;
+    /*width: 1166px;
+    height: 663px;*/
+    overflow: hidden;
+  }
+
+
+.text{
+  display: inline-block;
+  color:var(--color-default);
+  font-size: 25px;
+  font-weight: 500;
+  margin: 18px;
+}
+.container{
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  margin-top: 50px;
+}
+
+
+  hr{
+      margin: 10px 0;
+      background-color: #ccc;
+      border: 0;
+      height: 1px;
+      width: 100%;
+  }
+select{
+  width: 170px;
+}
+.container.img{
+  max-width: 100%;
+  width: 100px;
+  position: relative;
+  top: 8px;
+}
+.cont.img{
+  max-width: 100%;
+  width: 100px;
+  position: relative;
+  top: 8px;
+}
+
+
+/* Modal Styles */
+.modal {
+display: none; /* Hide the modal by default */
+position: fixed; /* Stay in place */
+z-index: 1; /* Sit on top */
+left: 0;
+top: 0;
+width: 100%; /* Full width */
+height: 100%; /* Full height */
+overflow: auto; /* Enable scroll if needed */
+background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+}
+
+   .modal-content3 {
+     display: block;
+     background-color: #fefefe;
+    /* background-image:;*/
+     margin: 15% auto; /* 15% from the top and centered */
+     padding:20px;
+     border: 1px solid #888;
+     width: 40%; /* 80% width */
+     height: auto;
+   }
+
+   .close {
+     color: #aaa;
+     float: right;
+     font-size: 28px;
+     font-weight: bold;
+   }
+
+   .close:hover,
+   .close:focus {
+     color: black;
+     text-decoration: none;
+     cursor: pointer;
+    }
+

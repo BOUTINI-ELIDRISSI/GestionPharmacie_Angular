@@ -21,13 +21,13 @@ body {
   }
   
   
-    hr{
-        margin: 10px 0;
-        background-color: #ccc;
-        border: 0;
-        height: 1px;
-        width: 100%;
-    }
+  hr{
+    margin: 10px 0;
+    background-color: #8b8888;
+    border: 0;
+    height: 1px;
+    width: 100%;
+}
   select{
     width: 170px;
   }
@@ -87,4 +87,6 @@ body {
         background-color: white;
         border: none;
       }
-  
+      img{
+        cursor: pointer;
+      }

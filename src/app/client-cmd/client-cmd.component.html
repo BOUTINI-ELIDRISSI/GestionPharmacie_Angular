@@ -1,0 +1,136 @@
+
+<html>
+  <head>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body style="background-color:#eafaed;">
+    <div class="image"></div>
+      <div class="text">
+        Commande  <span class="out"> <span class="email">{{shared.user.email}}  </span>&nbsp;&nbsp;&nbsp;<img src="assets/images/exit.png"  (click)="log_out()" alt=""></span>
+      </div>
+       <div class="cont">
+          <!--  info Modal content -->
+          <div *ngIf="modalVisible" id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content3">
+             <span (click)="closeModal()" class="close">&times;</span>
+<br><br>
+              <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #28b836;color:white">
+             Confirmation Facture
+              </nav>  <hr>
+                <div class="">
+                  <table>
+                    <tr>
+                      <td>Medicament <br><br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       <ul *ngFor="let item of Tables">
+                        <li>{{item.medicament.libelle}}</li>
+                      </ul>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Prix</td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {{prix_total}}
+                             </td>
+                    </tr>
+                    <tr>
+                      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total TTC :<br><br> </td>
+                      <td>{{TTC_total}} <br><br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TVA :  <br><br></td>
+                      <td>20%</td>
+                    </tr>
+                  </table>
+                <br>
+                    <button type="button" (click)="closeModal()" class="btn btn-outline-success" >Fermer
+                    </button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button"  class="btn btn-outline-success" (click)="ajouter()" >Confirmer
+                   </button>
+                </div>
+
+            </div>
+          </div>
+
+      <!-- the end of info Modal content -->
+      <p><img src="assets/images/money.png"  class="img" alt="">  &nbsp;&nbsp;Medicament</p>
+      <hr>
+      <table class="tbl">
+               <tr class="line">
+                   <td>Medicament &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+                   </td>
+                   <td>
+                     <select [(ngModel)]="table.medicament.libelle" (change)="updatePrice()">
+                       <option *ngFor="let med of allmed"  [value]="med.libelle">{{med.libelle}}</option>
+                      </select>
+                      <br><br></td>
+                   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quantité &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br></td>
+                   <td><input [(ngModel)]="table.quantite"  (change)="updatePrice()" type="text" name="" value=""> <br><br></td>
+                   </tr>
+                     <tr>
+                       <td></td>
+
+                       <td style="position:relative;left:120px ">
+                         Prix &nbsp;&nbsp; <input type="text" [(ngModel)]="table.prix" name=""  disabled>
+                       </td>
+
+                    </tr>
+               <tr>
+                 <td><td>
+                 <td></td>
+                 <td>
+                   <button type="button" class="btn btn-outline-success" (click)="ajouter_vente()">
+                       Enregistrer
+                   </button></td>
+                 <td>
+
+                </td>
+               </tr>
+           </table>
+</div>
+    <div class="container">
+      <p><img src="assets/images/facture.png" class="img" alt=""> &nbsp;&nbsp;Commande</p>
+      <hr>
+      <br>
+      <table class="table table-hover text-center">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">Medicament </th>
+            <th scope="col">Prix</th>
+            <th scope="col" >Quantite</th>
+            <th scope="col" >TTC</th>
+            <th scope="col">Action</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of Tables">
+            <td>{{item.medicament.libelle}}</td>
+            <td>{{item.prix}}</td>
+            <td>{{item.quantite}}</td>
+            <td>{{item.TTC}}</td>
+            <td><img (click)="delete(item.medicament.libelle)" src="assets/images/supprimer.png" alt=""></td>
+          </tr>
+        </tbody>
+        </table>
+        <button type="button" class="btn btn-outline-success" style="position:relative;left:940px" id="openModalBtn" (click)="openModal()">
+            Confirmer
+        </button>
+        </div>
+      <br><br>
+        
+  </body>
+</html>

@@ -38,18 +38,30 @@ export class RoleComponent implements OnInit{
     
   }
   closeModalajouter(): void {
+    this.allrole();
+
     this.modalVisibleajouter = false;
     console.log("closeModal for update is working")
+    this.allrole();
+
 
   }
   closeModalupdate(): void {
+    this.allrole();
+
     this.modalVisibleupdate = false;
     console.log("closeModal for update is working")
+    this.allrole();
+
 
   }
   closeModaldelete(): void {
+    this.allrole();
+
     this.modalVisibledelete = false;
     console.log("closeModal for delete is working")
+    this.allrole();
+
 
   }
 
@@ -60,6 +72,7 @@ export class RoleComponent implements OnInit{
     this.shared.all_roles().subscribe(
       (roles) => {
         // User saved successfully, perform any necessary actions
+
         this.roles=roles;
         console.log('User saved successfully!');
       },
@@ -78,6 +91,8 @@ export class RoleComponent implements OnInit{
     this.shared.save_role(this.ajouter_role).subscribe(
       () => {
         // User deleted successfully, perform any necessary actions
+        this.allrole();
+
         console.log('Role inserted successfully!');
       },
       (error) => {
@@ -85,6 +100,9 @@ export class RoleComponent implements OnInit{
         console.error('Error inserting role:', error);
       }
     )
+    this.allrole();
+
+    this.closeModalajouter();
   }
   update_role ={
     id:0,
@@ -94,6 +112,8 @@ export class RoleComponent implements OnInit{
     this.shared.update_role(this.update_role).subscribe(
       () => {
         // User deleted successfully, perform any necessary actions
+        this.allrole();
+
         console.log('Role updated successfully!');
       },
       (error) => {
@@ -101,11 +121,15 @@ export class RoleComponent implements OnInit{
         console.error('Error updating role:', error);
       }
     )
+    this.allrole();
+
+    this.closeModalupdate();
   }
   delete(){
       this.shared.delete_role(this.id_delete).subscribe(
         () => {
           // User deleted successfully, perform any necessary actions
+          this.allrole();
           console.log('Role deleted successfully!');
         },
         (error) => {
@@ -113,6 +137,9 @@ export class RoleComponent implements OnInit{
           console.error('Error deleting role:', error);
         }
       )
+      this.allrole();
+
+      this.closeModaldelete();
   }
 
 }

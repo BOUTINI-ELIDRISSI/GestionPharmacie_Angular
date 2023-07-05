@@ -13,7 +13,7 @@
     </div>
     <ul class="nav-list">
       <li>
-        <a routerLink="/dashboard">
+        <a routerLink="/menu/dashboard">
           <i class="bx bx-grid-alt"></i>
           <span class="link_name" >Dashboard</span>
           
@@ -34,14 +34,14 @@
         <span class="tooltip">Opérations</span>
         <ul>
           <li *ngIf="operationOptionsVisible">
-            <a routerLink="/achat">
+            <a routerLink="/menu/achat">
               <i></i><i></i>
               <span class="link_name">
                 <div class="under">Achat</div></span>
             </a>
           </li>
           <li *ngIf="operationOptionsVisible">
-            <a routerLink="/vente">
+            <a routerLink="/menu/vente">
               <i ></i><i></i>
               <span class="link_name">
                 <div class="under" >Vente</div></span>  
@@ -51,28 +51,35 @@
       </li>
             <!--******************************************-->
       <li>
-        <a routerLink="/commande">
+        <a routerLink="/menu/commande">
           <i class="bx bx-cart-alt"></i>
           <span class="link_name" >Commande</span>
         </a>
         <span class="tooltip">Commande</span>
       </li>
       <li>
-        <a routerLink="/facture">
+        <a routerLink="/menu/facture">
           <i class="bx bx-book-content"></i>
           <span class="link_name" >Facture</span>
         </a>
         <span class="tooltip">Facture</span>
       </li>
       <li>
-        <a routerLink="/fournisseur">
+        <a routerLink="/menu/stock">
+          <i class="bx bx-box"></i>
+          <span class="link_name">Stock </span>
+        </a>
+        <span class="tooltip">Stock </span>
+      </li>
+      <li>
+        <a routerLink="/menu/fournisseur">
           <i class="bx bx-group"></i>
           <span class="link_name" >Fournisseur</span>
         </a>
         <span class="tooltip">Fournisseur</span>
       </li>
       <li>
-        <a routerLink="/medicament">
+        <a routerLink="/menu/medicament">
           <i class="bx bx-injection"></i>
           <span class="link_name" >Medicament</span>
         </a>
@@ -83,7 +90,7 @@
       
       <!--******************************************-->
       <li>
-        <a routerLink="/client" >
+        <a routerLink="/menu/client" >
           <i class="bx bx-user"></i>
           <span class="link_name" >Client</span>
         </a>
@@ -101,14 +108,14 @@
         <span class="tooltip">Employee</span>
         <ul>
           <li *ngIf="employeeOptionsVisible">
-            <a  routerLink="/user">
+            <a  routerLink="/menu/user">
               <i></i><i></i>
               <span class="link_name">
                 <div class="under" >Utilisateur</div> </span>
             </a>
           </li>
           <li *ngIf="employeeOptionsVisible">
-            <a routerLink="/role">
+            <a routerLink="/menu/role">
               <i ></i><i></i>
               <span class="link_name">
                 <div class="under">Role</div></span>  
@@ -122,8 +129,8 @@
       <li class="profile">
         <div class="profile_details">
           <div class="profile_content">
-            <div class="name"> ahmed@gmail.com</div>
-            <div class="designation">Administrateur</div>
+            <div class="name"> {{shared.user.email}}</div>
+            <div class="designation">{{shared.role}}</div>
           </div>
         </div>
         <i class="bx bx-log-out" (click)="log_out()" id="log_out"></i>

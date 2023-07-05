@@ -21,4 +21,6 @@
     width: auto;
     /* Additional styling for the content area */
   }
-  
+  *{
+    overflow: hidden;
+  }

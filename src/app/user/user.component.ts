@@ -34,18 +34,30 @@ export class UserComponent implements OnInit  {
     this.name=nom;
   }
   closeModal(): void {
+    this.allusers();
+
     this.modalVisible = false;
     console.log("closeModal is working")
+    this.allusers();
+
 
   }
   closeModal2(): void {
+    this.allusers();
+
     this.modalVisible2 = false;
     console.log("closeModal for update is working")
+    this.allusers();
+
 
   }
   closeModal3(): void {
+    this.allusers();
+
     this.modalVisible3 = false;
     console.log("closeModal for delete is working")
+    this.allusers();
+
 
   }
 
@@ -94,15 +106,17 @@ export class UserComponent implements OnInit  {
     this.shared.save_user(this.us).subscribe(
       () => {
         // User saved successfully, perform any necessary actions
+        this.allusers();
+
         console.log('User saved successfully!');
-        this.allusers(); // Reload the data after save
       },
       (error) => {
         // Handle the error case
         console.error('Error saving user:', error);
       }
     );
-    
+    this.allusers();
+    this.closeModal();
     
   }
 
@@ -113,14 +127,16 @@ export class UserComponent implements OnInit  {
     this.shared.delete_user(this.id).subscribe(
       () => {
         // User deleted successfully, perform any necessary actions
-        console.log('User deleted successfully!');
         this.allusers();
+        console.log('User deleted successfully!');
       },
       (error) => {
         // Handle the error case
         console.error('Error deleting user:', error);
       }
     )
+    this.allusers();
+    this.closeModal3();
   }
   //modifier le role 
   nom='';
@@ -138,14 +154,17 @@ export class UserComponent implements OnInit  {
     this.shared.update_user(this.update_user).subscribe(
       () => {
         // User deleted successfully, perform any necessary actions
-        console.log('User updated successfully!');
         this.allusers();
+
+        console.log('User updated successfully!');
       },
       (error) => {
         // Handle the error case
         console.error('Error updating user:', error);
       }
     )
+    this.allusers();
+      this.closeModal2();
   }
 
   //new role
@@ -162,5 +181,7 @@ export class UserComponent implements OnInit  {
         console.error('Error saving role:', error);
       }
     );
+    this.allusers();
+
   }
 }

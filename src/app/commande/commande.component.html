@@ -20,11 +20,11 @@
 
 
            <!--  info Modal content -->
-           <div id="myModal" class="modal">
+           <div  *ngIf="modalVisible" id="myModal" class="modal">
              <!-- Modal content -->
              <div class="modal-content3">
-               <span class="close">&times;</span>
-<br><br>
+              <span (click)="closeModal()" class="close">&times;</span>
+              <br><br>
                <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #28b836;color:white">
               Details
                </nav>  <hr>
@@ -35,19 +35,18 @@
                          <th scope="col">Code Commande</th>
                          <th scope="col">Medicament </th>
                          <th scope="col">Quantite</th>
-
                        </tr>
                      </thead>
                       <tbody>
-                        <tr>
-                          <td>3</td>
-                          <td>string3</td>
-                          <td>1</td>
+                        <tr *ngFor="let item of lignes">
+                          <td>{{item.commande.code}}</td>
+                          <td>{{item.medicament.libelle}}</td>
+                          <td>{{item.quantite}}</td>
                         </tr>
                       </tbody>
                      </table>
                  <br>
-                     <button type="button" class="btn btn-outline-success" >Fermer
+                     <button type="button" (click)="closeModal()"  class="btn btn-outline-success" >Fermer
                      </button>
                  </div>
 
@@ -70,13 +69,13 @@
                </tr>
              </thead>
              <tbody>
-               <tr>
-                 <td>1</td>
-                 <td>28-06-2023</td>
-                 <td>77.15</td>
-                 <td>Adam</td>
-                 <td>Ahmed</td>
-                 <td><img src="assets/images/about.png" id="openModalBtn" alt=""></td>
+               <tr *ngFor="let item of allcmd">
+                 <td>{{item.code}}</td>
+                 <td>{{item.date_Cmd}}</td>
+                 <td>{{item.prix_total}}</td>
+                 <td>{{item.client.nom}}</td>
+                 <td>{{item.utilisateur.nom}}</td>
+                 <td><img src="assets/images/about.png" id="openModalBtn" (click)="openModal(item.code)" alt=""></td>
                </tr>
               
              </tbody>

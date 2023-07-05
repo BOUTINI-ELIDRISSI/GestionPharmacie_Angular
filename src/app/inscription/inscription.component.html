@@ -1,0 +1,88 @@
+<html>
+  <head>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  </head>
+  <body>
+    <div class="image">
+    </div> 
+    <div class="forms">
+    <div class="center">
+      <h1>Inscription</h1>
+
+    <form method="post">
+      <table width="600px" >
+        <tr>
+          <td ><div class="txt_field">
+            <input type="text" [(ngModel)]="client.nom" name="text" required>
+              <span></span>
+              <label>Nom</label>
+
+          </div></td>
+          <td >
+            <div class="txt_field" style="margin-left:100px">
+              <input type="text" [(ngModel)]="client.prenom" name="text" required>
+                <span></span>
+                <label>Prenom</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="">
+              <label>Genre : </label><br><br>
+              <input type="radio"  name="genre" [(ngModel)]="client.genre" value="Femme" > <label for=""> &nbsp;Femme</label> &nbsp;&nbsp; &nbsp;&nbsp;
+              <input type="radio"  name="genre" [(ngModel)]="client.genre" value="Homme"><label for=""> &nbsp;Homme</label>
+                <span></span>
+
+            </div>
+          </td>
+          <td >
+            <div class="txt_field" style="margin-left:100px">
+              <input type="text" [(ngModel)]="client.email"  name="email" required>
+                <span></span>
+                <label> Email</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td >
+            <div class="txt_field" >
+              <input type="text" [(ngModel)]="client.adresse"  name="email" required>
+                <span></span>
+                <label>Adresse</label>
+            </div>
+          </td>
+          <td >
+            <div class="txt_field" style="margin-left:100px">
+              <input type="text" [(ngModel)]="client.tele"  name="email" required>
+                <span></span>
+                <label>Telephone</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td >  <div class="txt_field"  >
+              <input type="password"  name="password" required>
+              <span></span>
+              <label>Mot de passe</label>
+            </div>
+          </td>
+          <td >
+            <div class="txt_field" style="margin-left:100px">
+              <input type="password" [(ngModel)]="client.mot_de_passe"  name="password" required>
+              <span></span>
+              <label>Confirmer le mot de passe</label>
+             <p>{{id}}</p>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+    <br>
+    <input type="submit" style="margin-left:170px" (click)="ajout()" value="Connexion">
+    <br><br>
+    </form>
+  </div>
+</div>
+  
+</body>

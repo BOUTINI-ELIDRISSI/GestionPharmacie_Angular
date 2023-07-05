@@ -128,7 +128,7 @@ export class DashboardComponent implements OnInit{
   //Commands
   cmd: any[] = [];
   allCommands(){
-    this.shared.allCommands().subscribe(
+    this.shared.cmds_no_user().subscribe(
       (cmd) => {
         this.cmd=cmd;
         console.log(' successfully!');

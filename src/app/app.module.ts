@@ -20,6 +20,11 @@ import { VenteComponent } from './vente/vente.component';
 import { CommandeComponent } from './commande/commande.component';
 import { FactureComponent } from './facture/facture.component';
 import { ClientComponent } from './client/client.component';
+import { StockComponent } from './stock/stock.component';
+import { InscriptionComponent } from './inscription/inscription.component';
+import { ClientMedComponent } from './client-med/client-med.component';
+import { ClientCmdComponent } from './client-cmd/client-cmd.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -39,6 +44,10 @@ import { ClientComponent } from './client/client.component';
     CommandeComponent,
     FactureComponent,
     ClientComponent,
+    StockComponent,
+    InscriptionComponent,
+    ClientMedComponent,
+    ClientCmdComponent,
     
   ],
   imports: [
@@ -47,7 +56,7 @@ import { ClientComponent } from './client/client.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

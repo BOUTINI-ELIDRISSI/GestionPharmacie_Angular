@@ -13,7 +13,7 @@
     </div>
     <ul class="nav-list">
       <li>
-        <a href="#">
+        <a routerLink="/menu-phar/dashboard-phar">
           <i class="bx bx-grid-alt"></i>
           <span class="link_name">Dashboard</span>
           
@@ -34,14 +34,14 @@
         <span class="tooltip">Opérations</span>
         <ul>
           <li *ngIf="operationOptionsVisible">
-            <a href="#">
+            <a routerLink="/menu-phar/achat">
               <i></i><i></i>
               <span class="link_name">
                 <div class="under">Achat</div></span>
             </a>
           </li>
           <li *ngIf="operationOptionsVisible">
-            <a href="#">
+            <a routerLink="/menu-phar/vente">
               <i ></i><i></i>
               <span class="link_name">
                 <div class="under">Vente</div></span>  
@@ -50,29 +50,30 @@
         </ul>
       </li>
             <!--******************************************-->
+     
       <li>
-        <a href="#">
-          <i class="bx bx-cart-alt"></i>
-          <span class="link_name">Commande</span>
-        </a>
-        <span class="tooltip">Commande</span>
-      </li>
-      <li>
-        <a href="#">
+        <a routerLink="/menu-phar/facture">
           <i class="bx bx-book-content"></i>
           <span class="link_name">Facture</span>
         </a>
         <span class="tooltip">Facture</span>
       </li>
       <li>
-        <a href="#">
+        <a routerLink="/menu-phar/stock">
+          <i class="bx bx-box"></i>
+          <span class="link_name">Stock </span>
+        </a>
+        <span class="tooltip">Stock </span>
+      </li>
+      <li>
+        <a routerLink="/menu-phar/fournisseur">
           <i class="bx bx-group"></i>
           <span class="link_name">Fournisseur</span>
         </a>
         <span class="tooltip">Fournisseur</span>
       </li>
       <li>
-        <a href="#">
+        <a routerLink="/menu-phar/medicament">
           <i class="bx bx-injection"></i>
           <span class="link_name">Medicament</span>
         </a>
@@ -98,8 +99,7 @@
     </ul>
   </div>
   <section class="home-section">
-   
-    <app-dashboard-phar></app-dashboard-phar>
+    <router-outlet></router-outlet>
   </section>
 </body>
 </html>

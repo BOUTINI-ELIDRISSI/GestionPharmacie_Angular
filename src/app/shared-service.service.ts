@@ -13,6 +13,12 @@ export class SharedService {
   constructor(private http: HttpClient ) { 
     
   }
+user={
+  id:0,
+  nom:'',
+  email:'',
+}
+role='';
  
   private apiUrl = 'http://localhost:8085/api/';
   /***************************Role**************************** */
@@ -55,6 +61,18 @@ export class SharedService {
   update_user(us : any){
     return this.http.put(this.apiUrl + "users/update", us)
   }
+
+  /******************************Client************************/
+  allclient(){
+    return this.http.get<any[]>(this.apiUrl + "clients/read");
+  }
+ 
+  search_client(email : String){
+    return this.http.get(this.apiUrl + "clients/findByEmail?email="+email);
+  }
+  save_client(client : any){
+    return this.http.post(this.apiUrl+"clients/create", client);
+  }
   /******************************Dasboard************************/
 
   vente_J():Observable<string>{
@@ -85,10 +103,7 @@ export class SharedService {
  
  
 
-    /******************************Stock************************/
-  allStock(){
-      return this.http.get<any[]>(this.apiUrl + "stock/list_stock");
-  }
+    
 
       /******************************Commands************************/
 
@@ -96,16 +111,37 @@ export class SharedService {
     return this.http.get<any[]>(this.apiUrl + "cmd/read");
 
   }
+  cmds_no_user(){
+    return this.http.get<any[]>(this.apiUrl + "cmd/findNoUser");
+  }
+  cmds_with_user(){
+    return this.http.get<any[]>(this.apiUrl + "cmd/findWithUser");
+  }
+  save_cmd(o : any){
+    return this.http.post(this.apiUrl + "cmd/create", o)
+  }
+  
+  search_by_client(id : number){
+    return this.http.get<any[]>(this.apiUrl + "cmd/findByClient?nom="+id);
+  }
+  search_cmd_code():Observable<number>{
+    return this.http.get<number>(this.apiUrl + "cmd/findByBigcode");
+  }
 
       /******************************Lignes************************/
 
   allligne(){
     return this.http.get<any[]>(this.apiUrl + "lignes/read");
   }
+  save_ligne_table(ligne : any[]){
+    return this.http.post(this.apiUrl + "lignes/create_table", ligne);
+   }
   ligne_by_med(libelle : string):Observable<any[]>{
     return this.http.get<any[]>(this.apiUrl + "lignes/findbyMedicament?medicamentLibelle="+libelle);
  }
-
+ search_cmd(code : number){
+  return this.http.get<any[]>(this.apiUrl + "lignes/findbyCommand?commandCode="+code);
+ }
   /***********************************Fournisseur************************/
   allfournisseur(){
     return this.http.get<any[]>(this.apiUrl + "fournisseurs/read");
@@ -126,6 +162,9 @@ export class SharedService {
    allmedicament(){
     return this.http.get<any[]>(this.apiUrl + "medicaments/read");
   }
+  search_med(libelle : string){
+    return this.http.get(this.apiUrl + "medicaments/findbylibelle?libelle="+libelle);
+  }
   save_medicament(o : any){
     return this.http.post(this.apiUrl + "medicaments/create", o)
   }
@@ -142,12 +181,46 @@ export class SharedService {
   entree_by_med(libelle : string):Observable<any[]>{
   return this.http.get<any[]>(this.apiUrl + "entree/findByMedicament?libelle="+libelle);
   }
-
+  save_entree(entree : any){
+    return this.http.post(this.apiUrl + "entree/create", entree);
+    }
+  entree_by_last_med(libelle : string){
+    return this.http.get(this.apiUrl + "entree/findByLastEntree?libelle="+libelle);
+    }
+  entree_by_fourni(nom : string){
+    return this.http.get<any[]>(this.apiUrl + "entree/findByFournisseur?nom="+nom);
+  }
   /***********************************Sortie************************/
   sortie_by_med(libelle : string):Observable<any[]>{
     return this.http.get<any[]>(this.apiUrl + "sorties/findbyMedicament?medicamentLibelle="+libelle);
  }
- 
+ save_sotie_table(sortie : any[]){
+  return this.http.post(this.apiUrl + "sorties/create_table", sortie);
+ }
+  search_by_fact(code : number){
+  return this.http.get<any[]>(this.apiUrl + "sorties/findbyFact?factureCode="+code);
+}
+delete_sortie(code : number){
+  return this.http.delete(this.apiUrl + "sorties/"+code);
+}
   
+  /*****************************Facture************************/
+  allfact(){
+    return this.http.get<any[]>(this.apiUrl + "facts/read");
+  }
+  save_fact(fact : any){
+    return this.http.post(this.apiUrl + "facts/create", fact);
+  }
+  search_fact_code():Observable<number>{
+    return this.http.get<number>(this.apiUrl + "facts/findByBigcode");
+  }
+  delete_fact(code : number){
+    return this.http.delete(this.apiUrl + "facts/"+code);
+  }
+/******************************Stock************************/
+  allStock(){
+  return this.http.get<any[]>(this.apiUrl + "stock/list_stock");
+}
+   
 
 }

@@ -15,10 +15,10 @@
        <hr>
          <div class="cont">
            <!--  info Modal content -->
-           <div id="myModal" class="modal">
+           <div *ngIf="modalVisible" id="myModal" class="modal">
              <!-- Modal content -->
              <div class="modal-content3">
-               <span class="close">&times;</span>
+              <span (click)="closeModal()" class="close">&times;</span>
 <br><br>
                <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #28b836;color:white">
               Confirmation Facture
@@ -32,20 +32,23 @@
                      <tr>
                        <td>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="text" name="" value="string2" disabled> <br><br>
+                        <ul *ngFor="let item of Tables">
+                          <li>{{item.medicament.libelle}}</li>
+                        </ul>
+                        <br><br>
                         </td>
                      </tr>
                      <tr>
-                       <td>Prix</td>
+                       <td>Prix Total :</td>
                      </tr>
                      <tr>
                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         <input type="text" disabled name="" value="57.19"> <br><br>
+                       {{prix_total}} <br><br>
                     </td>
                      </tr>
                      <tr>
                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total TTC :<br><br> </td>
-                       <td>137.26 <br><br>
+                       <td>{{TTC_total}} <br><br>
                        </td>
                      </tr>
                      <tr>
@@ -54,8 +57,11 @@
                      </tr>
                    </table>
                  <br>
-                     <button type="button" class="btn btn-outline-success" >Fermer
+                     <button type="button" (click)="closeModal()" class="btn btn-outline-success" >Fermer
                      </button>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     <button type="button"  class="btn btn-outline-success" (click)="ajouter()" >Confirmer
+                    </button>
                  </div>
 
              </div>
@@ -71,20 +77,18 @@
                         <td>Medicament &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
                         </td>
                         <td>
-                          <select>
-                            <option>string1</option>
-                            <option>string3</option>
-                            <option>string2</option>
-                           </select>
+                          <select [(ngModel)]="table.medicament.libelle" (change)="updatePrice()">
+                            <option *ngFor="let med of allmed" [value]="med.libelle" >{{med.libelle}}</option>
+                          </select>
                            <br><br></td>
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quantité &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br></td>
-                        <td><input type="text" name="" value=""> <br><br></td>
+                        <td><input [(ngModel)]="table.quantite"  (change)="updatePrice()" type="text" name="" value=""> <br><br></td>
                         </tr>
                           <tr>
                             <td></td>
 
                             <td style="position:relative;left:120px ">
-                              Prix &nbsp;&nbsp; <input type="text" name="" value="57.19" disabled>
+                              Prix &nbsp;&nbsp; <input type="text"  [(ngModel)]="table.prix" name="" disabled>
                             </td>
 
                          </tr>
@@ -92,7 +96,7 @@
                       <td><td>
                       <td></td>
                       <td>
-                        <button type="button" class="btn btn-outline-success">
+                        <button type="button" class="btn btn-outline-success" (click)="ajouter_vente()" >
                             Enregistrer
                         </button></td>
                       <td>
@@ -109,34 +113,29 @@
            <table class="table table-hover text-center">
              <thead class="table-light">
                <tr>
-                 <th scope="col">Code Facture</th>
                  <th scope="col">Medicament </th>
-                 <th scope="col">Prix</th>
                  <th scope="col" >Quantite</th>
-                 <th scope="col" >TTC</th>
+                 <th scope="col">Prix</th>
+                 <th scope="col">TTC</th>
                  <th scope="col">Action</th>
 
                </tr>
              </thead>
              <tbody>
-               <tr>
-                 <td>1</td>
-                 <td>string2</td>
-                 <td>57.19</td>
-                 <td>1</td>
-                 <td>137.26</td>
-                 <td><img src="supprimer.png" alt=""></td>
+               <tr *ngFor="let item of Tables">
+                 <td>{{item.medicament.libelle}}</td>
+                 <td>{{item.quantite}}</td>
+                 <td>{{item.prix}}</td>
+                 <td>{{item.TTC}}</td>
+                 <td><img (click)="delete(item.medicament.libelle)" src="assets/images/supprimer.png" alt=""></td>
                </tr>
              </tbody>
-             </table>
-             <button type="button" class="btn btn-outline-success" style="position:relative;left:920px" id="openModalBtn">
+             </table> <br>
+             <button type="button"  id="openModalBtn" (click)="openModal()" class="btn btn-outline-success" style="position:relative;left:920px" >
                  Confirmer
              </button>
          <div>
-
          </div>
  </div>
-
-
 </body>
 </html>

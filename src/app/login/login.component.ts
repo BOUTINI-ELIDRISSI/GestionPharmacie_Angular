@@ -10,10 +10,10 @@ import { Router } from '@angular/router';
 
 export class LoginComponent implements OnInit{
       user: any ;
+      client : any;
       email='';
       password='';
       error='';
-      role='';
   constructor( public shared: SharedService, private router : Router){
   }
 
@@ -26,30 +26,71 @@ export class LoginComponent implements OnInit{
   togglePasswordVisibility(event: Event): void {
     this.showPassword = (event.target as HTMLInputElement).checked;
   }
-
   search(): void {
     this.shared.search_user(this.email).subscribe(
       user => {
         this.user = user;
-        this.signIn(); // Call signIn function after retrieving the user
+        this.shared.role=this.user.role.nom;
       },
       error => {
         console.error('Error fetching users', error);
       }
     );
-  }
-  signIn(): void {
-    if (this.user && this.user.email !== null) { // Check if user is defined and email is not null
-      if (this.user.mot_de_passe === this.password) {
-        
-        this.router.navigate(['/root']);
-      } else {
-        this.error = 'Le mot de passe est incorrect';
-      }
-    } else {
-      this.error = 'Cet email n\'existe pas';
+    if(this.user == null){
+      this.shared.search_client(this.email).subscribe(
+        client => {
+          this.client = client;
+          this.shared.role = 'client';
+        },
+        error => {
+          console.error('Error fetching users', error);
+        }
+      );
+    };
+    if (this.client == null && this.user == null){
+      this.shared.role='';
     }
+    this.signIn();
   }
+
+
+  
+  signIn(): void {
+   
+    if(this.shared.role == 'Administrateur'){
+
+    if(this.password == this.user.mot_de_passe){
+      this.shared.user.email = this.email;
+      this.shared.user.id = this.user.id;
+      this.router.navigate(['/menu'])
+    }
+    else{
+      this.error="le mot de passe est incorrect";
+
+    }
+   }
+   else if(this.shared.role == "Pharmacien"){
+    if(this.password == this.user.mot_de_passe){
+    this.router.navigate(['/menu-phar'])
+    this.shared.user.email = this.email;
+    this.shared.user.id = this.user.id;
+    }
+    else{
+      this.error="le mot de passe est incorrect";
+
+    }
+   }
+   else if(this.shared.role == "client"){
+    if(this.password == this.client.mot_de_passe){
+      this.shared.user.email = this.email;
+      this.shared.user.id = this.client.id;
+    this.router.navigate(['/clientmed'])
+    }
+    else{
+      this.error="le mot de passe est incorrect";
+
+    }
+   }
 }
 /*
 [(ngModel)]="user.email" 
@@ -57,3 +98,4 @@ export class LoginComponent implements OnInit{
 <p>Email :{{user.email}}</p>
 <p>Mot de passe : {{user.password}}</p>
 */
+}

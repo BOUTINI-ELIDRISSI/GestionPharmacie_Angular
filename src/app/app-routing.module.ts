@@ -17,25 +17,50 @@ import { FactureComponent } from './facture/facture.component';
 import { CommaExpr } from '@angular/compiler';
 import { CommandeComponent } from './commande/commande.component';
 import { ClientComponent } from './client/client.component';
+import { StockComponent } from './stock/stock.component';
+import { InscriptionComponent } from './inscription/inscription.component';
+import { ClientMedComponent } from './client-med/client-med.component';
+import { ClientCmdComponent } from './client-cmd/client-cmd.component';
 
 const routes: Routes = [
-  
-  { path: '',redirectTo: '/dashboard',pathMatch: 'full', },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'user', component: UserComponent },
-  { path: 'role', component: RoleComponent },
+  {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  },
   {path:'login', component: LoginComponent},
-  {path:'menu-phar', component: MenuPharComponent},
-  {path:'dashboard-phar', component: DashboardPharComponent},
-  {path:'operations/:libelle', component: OperationsComponent},
-  {path:'medicament', component: MedicamentComponent},
-  {path: 'fournisseur', component : FournisseurComponent},
-  {path : 'role', component:RoleComponent},
-  {path: 'achat', component:AchatComponent},
-  {path: 'vente', component:VenteComponent},
-  {path: 'facture', component:FactureComponent},
-  {path: 'commande', component:CommandeComponent},
-  {path: 'client', component:ClientComponent}
+
+  { path: 'menu', component:MenuComponent, children:[
+    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    { path: 'dashboard', component: DashboardComponent },
+    { path: 'user', component: UserComponent },
+    { path: 'role', component: RoleComponent },
+    {path:'medicament', component: MedicamentComponent},
+    {path: 'fournisseur', component : FournisseurComponent},
+    {path: 'achat', component:AchatComponent},
+    {path: 'vente', component:VenteComponent},
+    {path: 'facture', component:FactureComponent},
+    {path: 'commande', component:CommandeComponent},
+    {path: 'client', component:ClientComponent},
+    {path: 'stock', component:StockComponent},
+    {path:'operations/:libelle', component: OperationsComponent},
+  ]
+},
+ {path: 'menu-phar', component:MenuPharComponent, children:[
+  { path: '', redirectTo: 'dashboard-phar', pathMatch: 'full' },
+    {path:'dashboard-phar', component: DashboardPharComponent},
+    {path:'medicament', component: MedicamentComponent},
+    {path: 'fournisseur', component : FournisseurComponent},
+    {path: 'achat', component:AchatComponent},
+    {path: 'vente', component:VenteComponent},
+    {path: 'facture', component:FactureComponent},
+    {path: 'stock', component:StockComponent},
+    {path:'operations/:libelle', component: OperationsComponent},
+ ]
+},
+  {path:'inscri', component: InscriptionComponent},
+  {path:'clientmed', component: ClientMedComponent},
+  {path:'client_cmd', component: ClientCmdComponent},
 
   
 ];

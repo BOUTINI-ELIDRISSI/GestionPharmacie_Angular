@@ -124,15 +124,31 @@
 
         <!-- Seventh card -->
     </td>
-    <td style="position: relative;left: 80px; bottom: 10px;">
-      <select multiple style="height: 200px;">
-        <option value="" style="color: #0b159e;"> Code &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Prix &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Client&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Utilisateur  </option>
+    <td style="position: relative;left: 80px; ">
+      <div class="option" >
+      <!--<select multiple style="height: 200px;">
+        <option value="" style="color: #0b159e;"> Code  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Prix &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Client&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Confirmer  </option>
         <option *ngFor="let item of cmd" [value]="item.code"> &nbsp;&nbsp;{{ item.code}}&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp; {{item.date_Cmd | date:'yyyy-MM-dd'}}
           &nbsp;&nbsp;&nbsp;  {{ item.prix_total}} &nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;{{item.client.nom}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;{{ item.utilisateur.nom}}</option>
-      </select>
+          &nbsp;&nbsp;&nbsp;
+      </select>-->
+           Code&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+            Date&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+          Prix&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+          Client &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+           Confirmer   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <br> 
+        <span class="opt" *ngFor="let item of cmd" >
+          {{ item.code}}&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+          {{item.date_Cmd | date:'yyyy-MM-dd'}}&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+           {{ item.prix_total}}&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+           {{item.client.nom}} &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <img style="cursor: pointer;" src="assets/images/fact.png" alt=""> <br>
+        </span>
+        
+
+      </div>
     </td>
   </tr>
 </table>

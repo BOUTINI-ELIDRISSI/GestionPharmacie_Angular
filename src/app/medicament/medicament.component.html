@@ -204,7 +204,7 @@
                   <td>{{item.libelle}}</td>
                   <td>{{item.ordonnance}}</td>
                   <td> 
-                    <span [routerLink]="['/operations', item.libelle]" ><img src="assets/images/arrows.png" alt=""></span>
+                    <span [routerLink]="['/menu/operations', item.libelle]" ><img src="assets/images/arrows.png" alt=""></span>
                     <span (click)="openModalinfo(item)"><img src="assets/images/about.png" alt=""></span>
                     <span  id="openModalBtn2" (click)="openModal2(item)"><img src="assets/images/implement.png" alt=""></span>
 

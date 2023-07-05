@@ -11,9 +11,10 @@ export class AppComponent implements OnInit{
   title = 'GestionPharmacie';
   //user : any;
   //us!: User ;
+
   constructor( public shared : SharedService, public router : Router){}
   ngOnInit(): void {
-
+    
 
     /*if (this.us.nom =='' && this.us.password==''){
       this.router.navigate (['/login'])

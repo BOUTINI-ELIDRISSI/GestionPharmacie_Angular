@@ -16,8 +16,7 @@
 
      <div class="text">Client</div>
 
-       <hr>
-
+<hr>
 
          <div class="container">
            <!--  info Modal content -->
@@ -33,14 +32,14 @@
                    <table class="table table-hover text-center">
                      <thead class="table-light">
                        <tr>
-                         <th scope="col">Code Facture</th>
+                         <th scope="col">Code Commande</th>
                          <th scope="col">Medicament </th>
                          <th scope="col">Quantite</th>
 
                        </tr>
                      </thead>
                       <tbody>
-                        <tr>
+                        <tr >
                           <td>1</td>
                           <td>string2</td>
                           <td>1</td>
@@ -67,29 +66,13 @@
                </tr>
              </thead>
              <tbody>
-               <tr>
-                 <td>Alami</td>
-                 <td>Salwa</td>
-                 <td>Femme</td>
-                 <td>salwa@gmail.com</td>
-                 <td>Maroc, casablanca , Sidi Maarouf</td>
-                 <td>0639462465</td>
-               </tr>
-               <tr>
-                 <td>Tazi</td>
-                 <td>Iman</td>
-                 <td>Femme</td>
-                 <td>iman@gmail.com</td>
-                 <td>Maroc, casablanca , Sidi Bernoussi</td>
-                 <td>0683725485</td>
-               </tr>
-               <tr>
-                 <td>Idrissi</td>
-                 <td>Adam</td>
-                 <td>Homme</td>
-                 <td>adam@gmail.com</td>
-                 <td>Maroc, casablanca , Roches Noires</td>
-                 <td>0639463946</td>
+               <tr *ngFor="let item of allclient">
+                 <td>{{item.nom}}</td>
+                 <td>{{item.prenom}}</td>
+                 <td>{{item.genre}}</td>
+                 <td>{{item.email}}</td>
+                 <td>{{item.adresse}}</td>
+                 <td>{{item.tele}}</td>
                </tr>
              </tbody>
              </table>

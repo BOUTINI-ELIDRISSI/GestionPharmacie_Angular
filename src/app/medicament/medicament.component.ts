@@ -17,11 +17,11 @@ export class MedicamentComponent implements OnInit{
     id: 0,
     libelle: '',
     description: '',
-    maladies: [],
+    maladies: [] as string[],
     ordonnance: true
   }
-  maladie='';
-  maladie2='';
+  maladie: string = '';
+  maladie2: string = '';
   info_med:any;
   update_med : any;
   id_delete = 0;
@@ -29,6 +29,7 @@ export class MedicamentComponent implements OnInit{
   constructor(public shared:SharedService){
 
   }
+
   openModal(): void {
     this.modalVisible = true;
     console.log("openModel is working")
@@ -50,20 +51,30 @@ export class MedicamentComponent implements OnInit{
     this.modalVisibleinfo = true;
     this.info_med = med;
     console.log("openModel of info is working");
+
   }
   closeModal(): void {
+    this.all_maladie();
+
     this.modalVisible = false;
     console.log("closeModal is working")
+    this.all_maladie();
 
   }
   closeModal2(): void {
+    this.all_maladie();
+
     this.modalVisible2 = false;
     console.log("closeModal for update is working")
+    this.all_maladie();
 
   }
   closeModal3(): void {
+    this.all_maladie();
+
     this.modalVisible3 = false;
     console.log("closeModal for delete is working")
+    this.all_maladie();
 
   }
   closeModalinfo(){
@@ -71,7 +82,8 @@ export class MedicamentComponent implements OnInit{
     console.log("closeModal for info is working")
 
   }
-  ngOnInit(): void {
+  all_maladie(){
+    this.allmed=[];
     this.shared.allmedicament().subscribe(
       (allmed) => {
         this.allmed = allmed;
@@ -81,21 +93,70 @@ export class MedicamentComponent implements OnInit{
       }
     )
   }
+  ngOnInit(): void {
+   this.all_maladie();
+  }
   ajouter_maladie(){
-
+    this.ajouter_med.maladies.push(this.maladie)
   }
   ajouter_maladie2(){
+    this.update_med.maladies.push(this.maladie2)
 
   }
   ajouter(){
+    this.shared.save_medicament(this.ajouter_med).subscribe(
+      () => {
+        // User deleted successfully, perform any necessary actions
+        this.all_maladie();
+        console.log('Medicament inserted successfully!');
+      },
+      (error) => {
+        // Handle the error case
+        console.error('Error inserting medicament:', error);
+      }
+    )
+    this.all_maladie();
+
+    this.closeModal();
 
   }
 
 update(){
+  this.shared.update_medicament(this.update_med).subscribe(
+    () => {
+      // User deleted successfully, perform any necessary actions
+      this.all_maladie();
+
+      console.log('Medicament updated successfully!');
+
+    },
+    (error) => {
+      // Handle the error case
+      console.error('Error updating medicament:', error);
+    }
+  )
+  this.all_maladie();
+
+  this.closeModal2();
 
 }
 
 delete(){
+  this.shared.delete_medicament(this.id_delete).subscribe(
+    () => {
+      // User deleted successfully, perform any necessary actions
+      this.all_maladie();
+
+      console.log('Role deleted successfully!');
+
+    },
+    (error) => {
+      // Handle the error case
+      console.error('Error deleting role:', error);
+    }
+  )
+  this.all_maladie();
+  this.closeModal3();
 
 }
 

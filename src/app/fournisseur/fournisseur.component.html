@@ -119,10 +119,10 @@
         <!-- the end of delete Modal content -->
           
        <!-- The info Modal -->
-       <div *ngIf="modalVisible" id="myModal4" class="modal">
+       <div *ngIf="modalVisible4" id="myModal4" class="modal">
         <!-- Modal content -->
         <div class="modal-content3">
-          <span (click)="closeModal()" class="close">&times;</span>
+          <span (click)="closeModal4()" class="close">&times;</span>
           <br> <br>
           <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #28b836;color: white;">
            Medicament
@@ -135,17 +135,21 @@
                     <th scope="col">Libelle </th>
                     <th scope="col" >Quantite</th>
                     <th scope="col" >Date</th>
+                    <th scope="col" >Prix</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <td>2</td>
-                  <td>string3</td>
-                  <td>4</td>
-                  <td>2023-05-20</td>
+                  <tr *ngFor="let item of achat">
+                  <td>{{item.id}}</td>
+                  <td>{{item.medicament.libelle}}</td>
+                  <td>{{item.quantite}}</td>
+                  <td>{{item.date_entree}}</td>
+                  <td>{{item.prix_achat}}</td>
+                </tr>
                 </tbody>
                 </table>
             <br>
-            <button type="button" class="btn btn-outline-success" (click)="ajouter()"> Fermer </button>
+            <button type="button" class="btn btn-outline-success" (click)="closeModal4()"> Fermer </button>
 
             </div>
 
@@ -176,7 +180,7 @@
                     
                     <span (click)="openModal3(item.id, item.nom)" ><img src="assets/images/delete.png" alt=""></span>
                     <span  id="openModalBtn2" (click)="openModal2(item)"><img src="assets/images/update.png" alt=""></span>
-
+                    <span  id="openModalBtn4" (click)="openModal4(item.nom)"><img src="assets/images/medecine.png" alt=""></span>
                   </td>
               </tr>
               </tbody>

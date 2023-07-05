@@ -8,6 +8,9 @@
 
 </head>
 <body>
+  <div class="text">Achat</div>
+<hr>
+
     <div class="container">
         <p><img src="assets/images/money.png" alt="">  &nbsp;&nbsp;Medicament</p>
         <hr>
@@ -17,10 +20,8 @@
                      <td>Medicament &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                      <br><br></td>
                      <td>
-                     <select>
-                       <option>string1</option>
-                       <option>string3</option>
-                       <option>string2</option>
+                      <select [(ngModel)]="save_achat.medicament.id">
+                        <option *ngFor="let med of allmed" [value]="med.id">{{med.libelle}}</option>
                       </select>
                      <br><br>
                       </td>
@@ -30,31 +31,30 @@
                      <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         Date d'expiration <br><br>
                       </td>&nbsp;
-                     <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input  type="date" > <br><br></td>
+                     <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input [(ngModel)]="save_achat.date_expiration"  type="datetime-local" > <br><br></td>
                  </tr>
                  <tr class="line">
                      <td >Prix d'achat &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br><br></td>
-                     <td><input  type="text" > <br><br></td>
+                     <td><input  [(ngModel)]="save_achat.prix_achat" type="text" > <br><br></td>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <td > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       Prix de vente <br><br></td>&nbsp;
-                     <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" > <br><br></td>
+                     <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input  [(ngModel)]="save_achat.prix_vente"type="text" > <br><br></td>
                  </tr>
 
                  <tr class="line">
                      <td >Quantité &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br><br></td>
-                     <td><input  type="text" > <br><br></td>
+                     <td><input [(ngModel)]="save_achat.quantite"  type="text" > <br><br></td>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <td > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       Fournisseur <br><br></td>&nbsp;
                      <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       <select>
-                        <option>Fourni1</option>
-                        <option>Fourni2</option>
+                      <select [(ngModel)]="save_achat.fournisseur.id">
+                        <option *ngFor="let fourni of allfourni" [value]="fourni.id">{{fourni.nom}}</option>
                       </select>
                       <br><br>
                       </td>
@@ -63,7 +63,7 @@
                    <td><td>
                    <td></td>
                    <td>
-                     <button type="button" class="btn btn-outline-success">
+                     <button type="button" class="btn btn-outline-success" (click)="ajouter()">
                          Enregistrer
                      </button></td>
                    <td>
@@ -71,5 +71,8 @@
                   </td>
                  </tr>
              </table>
+
+            
+
       </div>
       </body>
