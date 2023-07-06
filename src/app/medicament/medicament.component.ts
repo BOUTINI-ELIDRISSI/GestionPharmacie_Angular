@@ -29,7 +29,8 @@ export class MedicamentComponent implements OnInit{
   constructor(public shared:SharedService){
 
   }
-
+  message="";
+  message_visible = false;
   openModal(): void {
     this.modalVisible = true;
     console.log("openModel is working")
@@ -107,18 +108,27 @@ export class MedicamentComponent implements OnInit{
     this.shared.save_medicament(this.ajouter_med).subscribe(
       () => {
         // User deleted successfully, perform any necessary actions
-        this.all_maladie();
+        this.message="Le medicament a été bien ajouté";
         console.log('Medicament inserted successfully!');
       },
       (error) => {
         // Handle the error case
+        this.message="Le medicament n'a pas été bien ajouté";
+
         console.error('Error inserting medicament:', error);
       }
     )
-    this.all_maladie();
-
-    this.closeModal();
-
+    
+    setTimeout(() => {
+      this.message_visible=true;
+      this.all_maladie();
+       this.closeModal();
+  
+    }, 1000);
+  setTimeout(() => {
+    this.message_visible=false;
+  }, 5000);
+   
   }
 
 update(){
@@ -126,6 +136,7 @@ update(){
     () => {
       // User deleted successfully, perform any necessary actions
       this.all_maladie();
+      this.message="Le medicament a été bien modifié";
 
       console.log('Medicament updated successfully!');
 
@@ -133,11 +144,21 @@ update(){
     (error) => {
       // Handle the error case
       console.error('Error updating medicament:', error);
+      this.message="Le medicament n'a pas été bien modifié";
+
     }
   )
-  this.all_maladie();
+  setTimeout(() => {
+    this.message_visible=true;
+    this.all_maladie();
+     this.closeModal2();
 
-  this.closeModal2();
+  }, 1000);
+setTimeout(() => {
+  this.message_visible=false;
+}, 5000);
+
+  
 
 }
 
@@ -146,6 +167,7 @@ delete(){
     () => {
       // User deleted successfully, perform any necessary actions
       this.all_maladie();
+      this.message="Le medicament a été bien supprimé";
 
       console.log('Role deleted successfully!');
 
@@ -153,10 +175,19 @@ delete(){
     (error) => {
       // Handle the error case
       console.error('Error deleting role:', error);
+      this.message="Le medicament n'a pas été bien supprimé";
+
     }
   )
-  this.all_maladie();
-  this.closeModal3();
+  setTimeout(() => {
+    this.message_visible=true;
+    this.all_maladie();
+     this.closeModal3();
+
+  }, 1000);
+setTimeout(() => {
+  this.message_visible=false;
+}, 5000);
 
 }
 

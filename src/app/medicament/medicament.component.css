@@ -126,3 +126,17 @@ body {
     nav{
       color: blue;
     }
+
+    .reponse{
+      display: block;
+      max-width: 100%;
+      width:400px;
+      height: auto;
+      background-color: #058825;
+      color: white;
+      padding: 10px;
+      text-align: left;
+      margin-left: 850px;
+      border-radius: 10px;
+      
+    }

@@ -11,6 +11,8 @@ export class AchatComponent implements OnInit{
   constructor(public shared : SharedService,) {
    
   }
+  message="";
+  message_visible = false;
   allmed : any[] = [];
   save_achat={
     quantite:0,
@@ -65,11 +67,17 @@ export class AchatComponent implements OnInit{
       () => {
         // User saved successfully, perform any necessary actions
         console.log('Fournisseur saved successfully!');
+        this.message="Le médicament a été bien acheté";
       },
       (error) => {
         // Handle the error case
         console.error('Error saving fournisseur:', error);
+        this.message="Le médicament n'a pas été bien acheté";
       }
     );
+    this.message_visible=true;
+    setTimeout(() => {
+      this.message_visible=false;
+    }, 4000);
   } 
 } 

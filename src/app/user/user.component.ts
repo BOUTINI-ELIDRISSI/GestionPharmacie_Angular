@@ -15,6 +15,8 @@ export class UserComponent implements OnInit  {
   constructor(public shared : SharedService){
 
   }
+  message="";
+  message_visible = false;
   openModal(): void {
     this.modalVisible = true;
     console.log("openModel is working")
@@ -107,16 +109,25 @@ export class UserComponent implements OnInit  {
       () => {
         // User saved successfully, perform any necessary actions
         this.allusers();
-
+        this.message="L'utilisateur a été bien ajouté";
         console.log('User saved successfully!');
       },
       (error) => {
         // Handle the error case
         console.error('Error saving user:', error);
+        this.message="L'utilisateur n'a pas été bien ajouté";
+
       }
     );
-    this.allusers();
-    this.closeModal();
+    setTimeout(() => {
+      this.message_visible=true;
+      this.allusers();
+       this.closeModal();
+  
+    }, 1000);
+  setTimeout(() => {
+    this.message_visible=false;
+  }, 5000);
     
   }
 
@@ -127,16 +138,27 @@ export class UserComponent implements OnInit  {
     this.shared.delete_user(this.id).subscribe(
       () => {
         // User deleted successfully, perform any necessary actions
-        this.allusers();
+        this.message="L'utilisateur a été bien supprimé";
+
         console.log('User deleted successfully!');
       },
       (error) => {
         // Handle the error case
         console.error('Error deleting user:', error);
+        this.message="L'utilisateur n'a pas été bien supprimé";
+
+
       }
     )
-    this.allusers();
-    this.closeModal3();
+    setTimeout(() => {
+      this.message_visible=true;
+      this.allusers();
+       this.closeModal3();
+  
+    }, 1000);
+  setTimeout(() => {
+    this.message_visible=false;
+  }, 5000);
   }
   //modifier le role 
   nom='';
@@ -154,17 +176,26 @@ export class UserComponent implements OnInit  {
     this.shared.update_user(this.update_user).subscribe(
       () => {
         // User deleted successfully, perform any necessary actions
-        this.allusers();
+        this.message="Le role "+this.update_user.nom+" a été bien modifié";
 
         console.log('User updated successfully!');
       },
       (error) => {
-        // Handle the error case
+        // Handle the error case 'utilisateur
         console.error('Error updating user:', error);
+        this.message="Le role de "+this.update_user.nom+" n'a pas été bien modifié";
+
       }
     )
-    this.allusers();
-      this.closeModal2();
+    setTimeout(() => {
+      this.message_visible=true;
+      this.allusers();
+       this.closeModal2();
+  
+    }, 1000);
+  setTimeout(() => {
+    this.message_visible=false;
+  }, 5000);
   }
 
   //new role

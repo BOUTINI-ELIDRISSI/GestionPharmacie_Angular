@@ -26,7 +26,7 @@
                  <div class="">
                    <table>
                      <tr>
-                       <td>Medicament <br><br>
+                       <td style="color: blue;">Medicament
                        </td>
                      </tr>
                      <tr>
@@ -39,27 +39,24 @@
                         </td>
                      </tr>
                      <tr>
-                       <td>Prix Total :</td>
-                     </tr>
+                      <td style="color: blue;">Prix Total : </td>
+                      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{prix_total}} 
+                      </td>
+                    </tr>
                      <tr>
-                       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       {{prix_total}} <br><br>
-                    </td>
-                     </tr>
-                     <tr>
-                       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total TTC :<br><br> </td>
-                       <td>{{TTC_total}} <br><br>
+                       <td style="color: blue;">Total TTC : </td>
+                       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{TTC_total}} 
                        </td>
                      </tr>
                      <tr>
-                       <td> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TVA :  <br><br></td>
-                       <td>20%</td>
+                       <td style="color: blue;">TVA :</td>
+                       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20%</td>
                      </tr>
                    </table>
                  <br>
                      <button type="button" (click)="closeModal()" class="btn btn-outline-success" >Fermer
                      </button>
-                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                      <button type="button"  class="btn btn-outline-success" (click)="ajouter()" >Confirmer
                     </button>
                  </div>
@@ -137,5 +134,11 @@
          <div>
          </div>
  </div>
+ <br>
+ <br>
+ <div *ngIf="message_visible " class="reponse">
+   <img src="assets/images/verifier.png" alt="">&nbsp;&nbsp;&nbsp; {{message}} 
+ </div>
+ <br>
 </body>
 </html>

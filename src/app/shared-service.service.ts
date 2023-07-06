@@ -127,6 +127,12 @@ role='';
   search_cmd_code():Observable<number>{
     return this.http.get<number>(this.apiUrl + "cmd/findByBigcode");
   }
+  search_by_code(code : number){
+    return this.http.get(this.apiUrl + "cmd/findByCode?code="+code);
+  }
+  update_cmd(o : any){
+    return this.http.put(this.apiUrl + "cmd/update", o)
+  }
 
       /******************************Lignes************************/
 
@@ -156,6 +162,9 @@ role='';
   delete_fourni(id : number) {
     return this.http.delete(this.apiUrl + "fournisseurs/"+ id)
 
+  }
+  search_fourni(nom:string){
+    return this.http.get(this.apiUrl + "fournisseurs/findByNom?nom="+nom);
   }
 
    /***********************************Medicament************************/
@@ -221,6 +230,8 @@ delete_sortie(code : number){
   allStock(){
   return this.http.get<any[]>(this.apiUrl + "stock/list_stock");
 }
-   
+  envoyer_email(email:string, subject:string, body: string){
+    return this.http.get(this.apiUrl + "stock/send_email?email="+email+"&subject="+subject+"&body="+body+"");
+  }
 
 }

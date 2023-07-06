@@ -64,9 +64,9 @@ body {
        cursor: pointer;
       }
   
-    hr{
+      hr{
         margin: 10px 0;
-        background-color: #ccc;
+        background-color: #8b8888;
         border: 0;
         height: 1px;
         width: 100%;
@@ -99,4 +99,18 @@ body {
     .btn:hover{
       background-color: #058825;
   
+    }
+
+    .reponse{
+      display: block;
+      max-width: 100%;
+      width:400px;
+      height: auto;
+      background-color: #058825;
+      color: white;
+      padding: 10px;
+      text-align: left;
+      margin-left: 850px;
+      border-radius: 10px;
+      
     }

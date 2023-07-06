@@ -9,6 +9,7 @@ import { SharedService } from '../shared-service.service';
 export class FactureComponent implements OnInit{
   constructor(public shared : SharedService){}
   modalVisible = false;
+  modalVisible2 = false;
   code=0;
   openModal(code : number): void {
     this.modalVisible = true;
@@ -17,9 +18,21 @@ export class FactureComponent implements OnInit{
     console.log("openModel is working")
     
   }
+  openModal2(code : number): void {
+    this.modalVisible2 = true;
+    this.code=code;
+    this.search_ventes();
+    console.log("openModel2 is working")
+    
+  }
   closeModal(): void {
     this.modalVisible = false;
     console.log("closeModal is working")
+  
+  }
+  closeModal2(): void {
+    this.modalVisible2 = false;
+    console.log("closeModal2 is working")
   
   }
   //////////////
@@ -51,8 +64,8 @@ search_ventes(){
 ngOnInit(): void {
   this.all_fact();
 }
-delete_fact(code : number){
-  this.shared.delete_fact(code).subscribe(
+delete_fact(){
+  this.shared.delete_fact(this.code).subscribe(
     () => {
       console.log('good');
       this.all_fact();
@@ -65,8 +78,8 @@ delete_fact(code : number){
   this.all_fact();
 
 }
-delete(code : number){
-  this.shared.delete_sortie(code).subscribe(
+delete(){
+  this.shared.delete_sortie(this.code).subscribe(
     () => {
       console.log('good');
       this.all_fact();
@@ -76,8 +89,10 @@ delete(code : number){
        console.error('Error saving ventes:', error);
      }
   );
-  this.delete_fact(code);
+  this.delete_fact();
   this.all_fact();
+
+  this.closeModal2();
 
 }
 

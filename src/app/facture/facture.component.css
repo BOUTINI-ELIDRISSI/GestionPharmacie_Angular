@@ -66,7 +66,15 @@ body {
        width: 40%; /* 80% width */
        height: auto;
      }
-  
+     .modal-content4 {
+      background-color: #fefefe;
+     /* background-image:;*/
+      margin: 15% auto; /* 15% from the top and centered */
+      padding:20px;
+      border: 1px solid #888;
+      width: 30%; /* 80% width */
+      height: auto;
+    }
      .close {
        color: #aaa;
        float: right;

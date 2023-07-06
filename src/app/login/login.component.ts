@@ -36,21 +36,28 @@ export class LoginComponent implements OnInit{
         console.error('Error fetching users', error);
       }
     );
-    if(this.user == null){
-      this.shared.search_client(this.email).subscribe(
-        client => {
-          this.client = client;
-          this.shared.role = 'client';
-        },
-        error => {
-          console.error('Error fetching users', error);
-        }
-      );
-    };
-    if (this.client == null && this.user == null){
-      this.shared.role='';
-    }
-    this.signIn();
+    setTimeout(() => {
+      if(this.user == null){
+        this.shared.search_client(this.email).subscribe(
+          client => {
+            this.client = client;
+            this.shared.role = 'client';
+          },
+          error => {
+            console.error('Error fetching users', error);
+          }
+        );
+      };
+     
+    }, 1000);
+    
+    setTimeout(() => {
+      if (this.client == null && this.user == null){
+        this.shared.role='';
+      }
+      this.signIn();
+    }, 2000);
+    
   }
 
 
@@ -59,37 +66,28 @@ export class LoginComponent implements OnInit{
    
     if(this.shared.role == 'Administrateur'){
 
-    if(this.password == this.user.mot_de_passe){
+    
       this.shared.user.email = this.email;
       this.shared.user.id = this.user.id;
       this.router.navigate(['/menu'])
-    }
-    else{
-      this.error="le mot de passe est incorrect";
-
-    }
+    
+    
    }
    else if(this.shared.role == "Pharmacien"){
-    if(this.password == this.user.mot_de_passe){
-    this.router.navigate(['/menu-phar'])
+   
+
     this.shared.user.email = this.email;
     this.shared.user.id = this.user.id;
-    }
-    else{
-      this.error="le mot de passe est incorrect";
-
-    }
+    this.router.navigate(['/menu-phar'])
+   
    }
    else if(this.shared.role == "client"){
-    if(this.password == this.client.mot_de_passe){
+   
       this.shared.user.email = this.email;
       this.shared.user.id = this.client.id;
     this.router.navigate(['/clientmed'])
-    }
-    else{
-      this.error="le mot de passe est incorrect";
-
-    }
+    
+   
    }
 }
 /*

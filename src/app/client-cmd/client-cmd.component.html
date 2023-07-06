@@ -20,12 +20,12 @@
              <span (click)="closeModal()" class="close">&times;</span>
 <br><br>
               <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #28b836;color:white">
-             Confirmation Facture
+             Confirmation Commande
               </nav>  <hr>
                 <div class="">
                   <table>
                     <tr>
-                      <td>Medicament <br><br>
+                      <td style="color:blue">Medicament 
                       </td>
                     </tr>
                     <tr>
@@ -36,22 +36,22 @@
                       </ul>
                       </td>
                     </tr>
+                    <br>
                     <tr>
-                      <td>Prix</td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <td style="color:blue">Prix Total :</td>
+                      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         {{prix_total}}
                              </td>
                     </tr>
+                   
                     <tr>
-                      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total TTC :<br><br> </td>
-                      <td>{{TTC_total}} <br><br>
+                      <td style="color:blue">Total TTC : </td>
+                      <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{TTC_total}} 
                       </td>
                     </tr>
                     <tr>
-                      <td> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TVA :  <br><br></td>
-                      <td>20%</td>
+                      <td style="color:blue">TVA :  </td>
+                      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20%</td>
                     </tr>
                   </table>
                 <br>
@@ -130,7 +130,10 @@
             Confirmer
         </button>
         </div>
-      <br><br>
-        
+      <br> <br>
+      <div *ngIf="message_visible " class="reponse">
+        <img src="assets/images/verifier.png" alt="">&nbsp;&nbsp;&nbsp; {{message}} 
+      </div>
+      <br>
   </body>
 </html>

@@ -17,42 +17,111 @@
      <div class="text">Stock</div>
        <hr>
          <div class="container">
-           <!--  info Modal content -->
-           <div id="myModal" class="modal">
+
+          <!--  info Modal content -->
+          <div *ngIf="modalVisible1" id="myModal" class="modal2">
+            <!-- Modal content -->
+            <div class="modal-content1">
+              <span (click)="closeModal1()" class="close">&times;</span>
+              <br><br>
+              <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #28b836;color:white">
+             Envoyer un Email
+              </nav>  <hr>
+              <div class="cont">
+               <table class="tbl">
+                 <tr>
+                   <td>Fournisseur : </td>
+                   <td>
+                     <select  [(ngModel)]="email" (change)="onSelectFourni()">
+                       <option *ngFor="let item of allfourni" [value]="item.email_F">{{item.nom}}</option>
+                     </select>
+                   </td>
+                 </tr>
+                <tr><td>
+                  <br>Quantité :</td>
+                   <td rows="2" style="width:400px"><br>
+                    <input type="email" [(ngModel)]="qte" class="form-control" id="floatingInput"  placeholder="0">
+                  </td>
+                 </tr>
+             </table>
+           <br>
+           <button type="button" class="btn btn-outline-success" (click)="suivant()"> Suivant </button>
+           
+           </div>
+
+            </div>
+          </div>
+
+      <!-- the end of info Modal content -->
+
+          
+           <!--  email Modal content -->
+           <div *ngIf="modalVisible" id="myModal" class="modal">
              <!-- Modal content -->
              <div class="modal-content3">
-               <span class="close">&times;</span>
+              <span (click)="closeModal()" class="close">&times;</span>
 <br><br>
                <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #28b836;color:white">
-              Details
+              Envoyer Email
                </nav>  <hr>
-                 <div class="">
-                   <table class="table table-hover text-center">
-                     <thead class="table-light">
-                       <tr>
-                         <th scope="col">Code Facture</th>
-                         <th scope="col">Medicament </th>
-                         <th scope="col">Quantite</th>
+               <div class="cont">
+                <table class="tbl">
+                  <tr >
+                    <td>Destinataire : </td>
+                  </tr>
+                  <tr >
+                    <td ><input type="text" [(ngModel)]="email" style="width: 500px; padding: 6px;" disabled name="" id=""></td>
+                  </tr>
+                  <tr>
+                    <td>Objet :</td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" style="width: 500px; padding: 6px;" [(ngModel)]="obj"  disabled name="" id=""></td>
+                  </tr>
+                  <tr>
+                    <td>Messages : </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <textarea readonly  #textareaRef  style="width: 500px;padding: 0;text-align: left; overflow-y: scroll;"  name="" id="" cols="30" rows="10">
 
-                       </tr>
-                     </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>string2</td>
-                          <td>1</td>
-                        </tr>
-                      </tbody>
-                     </table>
-                 <br>
-                     <button type="button" class="btn btn-outline-success" >Fermer
-                     </button>
-                 </div>
+      Cher/Chère {{nom}},
+
+  J'espère que vous allez bien. Je vous écris pour vous demander de réapprovisionner un médicament spécifique qui est actuellement en rupture de stock dans notre inventaire.
+
+  Nom du produit : {{med}}
+  Quantité : {{qte}}
+  Adresse de livraison : Maroc, Casablanca , Bd Abd Moumen
+                        
+  Veuillez me faire savoir si le médicament est disponible et si vous êtes en mesure de répondre à notre demande. Si possible, veuillez me fournir les informations suivantes :
+                        
+  Détails sur les tarifs et les éventuelles remises pour les commandes en gros.
+  Délai de livraison prévu.
+  Modes de paiement acceptés par votre entreprise.
+  Si des procédures spécifiques ou des documents sont nécessaires pour passer une commande, veuillez inclure ces détails également.
+                        
+  Nous vous remercions de votre attention rapide à cette demande. Nous apprécions grandement votre aide pour assurer la disponibilité de ce médicament dans notre stock. Si vous avez des questions supplémentaires ou avez besoin d'informations supplémentaires, n'hésitez pas à me contacter au 0643804678.
+                        
+  Nous attendons avec impatience votre réponse positive.
+                        
+            Cordialement,
+            {{shared.user.email}}
+            {{shared.role}}
+            Pharmacie
+            0633648457
+                      </textarea>
+                    </td>
+                  </tr>
+              </table>
+            <br>
+            <button type="button" class="btn btn-outline-success" (click)="envoyer()"  > Envoyer </button>
+            
+            </div>
 
              </div>
            </div>
 
-       <!-- the end of info Modal content -->
+       <!-- the end of email Modal content -->
 
 
            <table class="table table-hover text-center">
@@ -71,14 +140,18 @@
                  <td>{{item.medicament_id}}</td>
                  <td>{{item.medicament_Libelle}}</td>
                  <td>{{item.fournisseur}}</td>
-                 <td>{{item.date_expiration}}</td>
-                 <td>{{item.qte}}</td>
-                 <td><img src="assets/images/email.png" id="openModalBtn" alt=""></td>
+                 <td [ngClass]="{'color' : isExpired(item.date_expiration) }">{{item.date_expiration}}</td>
+                 <td [ngClass]="{'color' : item.qte == 0}">{{item.qte}}</td>
+                 <td><img src="assets/images/email.png" (click)="openModal(item.medicament_Libelle)" id="openModalBtn" alt=""></td>
                </tr>
               
              </tbody>
         </table>
          </div>
-
+<br>
+<div *ngIf="message_visible " class="reponse">
+  <img src="assets/images/verifier.png" alt="">&nbsp;&nbsp;&nbsp; {{message}} 
+</div>
+<br>
 </body>
 </html>

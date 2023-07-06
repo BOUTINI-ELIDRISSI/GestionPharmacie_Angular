@@ -18,6 +18,10 @@ export class DashboardComponent implements OnInit{
   nb_entree_j! : number;
 
   constructor(public shared : SharedService){}
+
+  message="";
+  message_visible = false;
+
   ngOnInit(): void {
     this.Vente_J();
     this.Vente_M();
@@ -28,7 +32,7 @@ export class DashboardComponent implements OnInit{
     this.Med_Date_Ex();
     this.NB_Entree_J();
     this.allstock();
-
+    console.log('the id :'+this.shared.user.id)
     this.allCommands();
 
   }
@@ -131,14 +135,93 @@ export class DashboardComponent implements OnInit{
     this.shared.cmds_no_user().subscribe(
       (cmd) => {
         this.cmd=cmd;
-        console.log(' successfully!');
+        console.log(' Commands successfully!');
       },
       (error) => {
         console.error('Error:', error);
       }
     )
   }
-  
+
+  lignes : any[]=[];
+  search_lignes(code : number){
+    this.shared.search_cmd(code).subscribe(
+      (lignes) => {
+       this.lignes=lignes;
+      },
+      (error) => {
+        // Handle the error case
+        console.error('Error searching lignes:', error);
+      }
+    );
+  }
+  id = 0;
+  modalVisible = false;
+    openModal(code : number): void {
+      this.search_lignes(code);
+      this.modalVisible = true;
+      console.log("openModel is working")
+      
+      this.shared.search_by_code(code).subscribe(
+        (search_cmd) => {
+         this.search_cmd=search_cmd;
+         /*if(this.search_cmd != null){
+          this.search_cmd.utilisateur.id=this.shared.user.id;
+         }*/
+        },
+        (error) => {
+          // Handle the error case
+          console.error('Error searching commande:', error);
+        }
+      );
+   setTimeout(() => {
+    console.log('the code :'+this.search_cmd.code)
+
+   }, 1000);
+
+}
+
+
+closeModal(): void {
+      this.modalVisible = false;
+      console.log("closeModal is working")
+    
+    }
+
+
+search_cmd: any;
+    ajouter(){
+      if (this.search_cmd != null) {
+        if (this.search_cmd.utilisateur == null) {
+          this.search_cmd.utilisateur = {};
+        }
+        this.search_cmd.utilisateur.id=this.shared.user.id;
+        setTimeout(()=>{
+          this.shared.update_cmd(this.search_cmd).subscribe(
+            () => {
+              this.message="La commande a été confirmée";
+
+              console.log('Commande updated successfully:');
+            },
+            (error) => {
+              // Handle the error case
+              console.error('Error updating commande:', error);
+              this.message="La commande n'a pas été confirmée";
+
+            }
+          );
+         },2000)
+     
+      setTimeout(() => {
+        this.message_visible=true;
+        this.allCommands();
+        this.closeModal();
+      }, 3000);
+      setTimeout(() => {
+        this.message_visible=false;
+      }, 7000);
+    }
+    }
 }
 /*
 <div style="">

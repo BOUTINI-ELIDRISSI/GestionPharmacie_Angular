@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
 export class ClientCmdComponent implements OnInit{
   constructor(public shared : SharedService, public router:Router){}
   currentDate: string = new Date().toISOString();
-
+  message="";
+  message_visible = false;
   allmed : any[] = [];
   
   new_med=""
@@ -162,12 +163,24 @@ calcul_prix(){
     this.shared.save_ligne_table(this.ventes).subscribe(
         () => {
           console.log('good');
+          this.message="La commande a été confirmée";
+
         },
         (error) => {
           console.error('Error fetching sortie data:', error);
+          this.message="La commande n'a pas été confirmée";
+
         }
     )
-    this.closeModal();
+    setTimeout(() => {
+      this.message_visible=true;
+      this.closeModal();
+      this.Tables=[];
+      this.ventes=[];
+    }, 1000);
+    setTimeout(() => {
+      this.message_visible=false;
+    }, 5000);
   
   }
   

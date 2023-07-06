@@ -10,6 +10,45 @@
     <div class="text">Dashboard</div>
     <hr>
   <div class="container">
+    <!--  info Modal content -->
+    <div *ngIf="modalVisible" id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content3">
+       <span (click)="closeModal()" class="close">&times;</span>
+<br><br>
+    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #28b836;color:white">
+      Confirmation Commande
+       </nav>  <hr>
+         <div class="">
+          <table class="table table-hover text-center" >
+            <thead class="table-light">
+              <tr>
+                <th scope="col">Code</th>
+                <th scope="col">Medicament</th>
+                <th scope="col" >Qantité</th>               
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of lignes">
+                <td>{{item.commande.code}}</td>
+                <td>{{item.medicament.libelle}}</td>
+                <td>{{item.quantite}}</td>
+              </tr>
+            </tbody>
+          </table>
+         <br>
+             <button type="button" (click)="closeModal()" class="btn btn-outline-success" >Fermer
+             </button>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <button type="button"  class="btn btn-outline-success" (click)="ajouter()" >Confirmer
+            </button>
+         </div>
+
+     </div>
+   </div>
+
+<!-- the end of info Modal content -->
+
   <div class="dashboard-container">
   <div class="row">
     <div class="col-md-3">
@@ -109,7 +148,7 @@
               <td>{{item.date_expiration}}</td>
               <td>{{item.fournisseur}}</td>
               <td>{{item.qte}}</td>
-              <td> <span class="dtl"><img src="assets/images/about.png" alt=""></span> </td>
+              <td> <span class="dtl" routerLink="/menu/stock"><img src="assets/images/about.png" alt=""></span> </td>
             
 
             <td>
@@ -144,7 +183,7 @@
           {{item.date_Cmd | date:'yyyy-MM-dd'}}&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
            {{ item.prix_total}}&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
            {{item.client.nom}} &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <img style="cursor: pointer;" src="assets/images/fact.png" alt=""> <br>
+           <img style="cursor: pointer;" id="openModalBtn" (click)="openModal(item.code)"  src="assets/images/fact.png" alt=""> <br>
         </span>
         
 
@@ -152,5 +191,9 @@
     </td>
   </tr>
 </table>
+<br>
+<div *ngIf="message_visible " class="reponse">
+  <img src="assets/images/verifier.png" alt="">&nbsp;&nbsp;&nbsp; {{message}} 
+</div>
 </body>
 </html>

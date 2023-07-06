@@ -53,7 +53,7 @@ select{
 
 /* Modal Styles */
 .modal {
-display: none; /* Hide the modal by default */
+display: block; /* Hide the modal by default */
 position: fixed; /* Stay in place */
 z-index: 1; /* Sit on top */
 left: 0;
@@ -63,6 +63,17 @@ height: 100%; /* Full height */
 overflow: auto; /* Enable scroll if needed */
 background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
 }
+.modal2 {
+  display: block; /* Hide the modal by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+  }
 
    .modal-content3 {
      display: block;
@@ -74,6 +85,17 @@ background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
      width: 40%; /* 80% width */
      height: auto;
    }
+
+   .modal-content1 {
+    display: block;
+    background-color: #fefefe;
+   /* background-image:;*/
+    margin: 15% auto; /* 15% from the top and centered */
+    padding:20px;
+    border: 1px solid #888;
+    width: 40%; /* 80% width */
+    height: auto;
+  }
 
    .close {
      color: #aaa;
@@ -88,4 +110,29 @@ background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
      text-decoration: none;
      cursor: pointer;
     }
+    .btn{
+      background-color: white;
+      color: #058825;
+      border-color: #058825;
+    }
+      .btn:hover{
+        background-color: #058825;
+    
+      }
+.color{
+  color:red;
+}
 
+.reponse{
+  display: block;
+  max-width: 100%;
+  width:400px;
+  height: auto;
+  background-color: #058825;
+  color: white;
+  padding: 10px;
+  text-align: left;
+  margin-left: 850px;
+  border-radius: 10px;
+  
+}

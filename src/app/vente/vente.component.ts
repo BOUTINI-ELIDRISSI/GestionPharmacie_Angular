@@ -164,12 +164,22 @@ ajouter(){
   this.shared.save_sotie_table(this.ventes).subscribe(
       () => {
         console.log('good');
+        this.message="La facture a été confirmée";
       },
       (error) => {
         console.error('Error fetching sortie data:', error);
+        this.message="La facture n'a pas été confirmée";
       }
   )
+  setTimeout(() => {
+    this.message_visible=true;
+    this.Tables=[];
+      this.ventes=[];
+  }, 1000);
   this.closeModal();
+  setTimeout(() => {
+    this.message_visible=false;
+  }, 5000);
 
 }
 
@@ -216,7 +226,10 @@ this.ventes.forEach((vente) => {
       }
     );
   }
+////////////////////////////////
 
+message="";
+message_visible = false;
 
 }
 /*

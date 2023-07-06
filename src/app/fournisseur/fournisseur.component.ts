@@ -27,6 +27,9 @@ constructor(public shared : SharedService){
 
 }
 
+message="";
+message_visible = false;
+
 openModal(): void {
   this.modalVisible = true;
   console.log("openModel is working")
@@ -104,44 +107,61 @@ ajouter(){
       this.all_fourni();
 
       // User saved successfully, perform any necessary actions
+      this.message="Le fournisseur a été bien ajouté";
       console.log('Fournisseur saved successfully!');
 
     },
     (error) => {
       // Handle the error case
       console.error('Error saving fournisseur:', error);
+      this.message="Le fournisseur n'a pas été bien ajouté";
+
     }
   );
-  this.all_fourni();
+    setTimeout(() => {
+      this.message_visible=true;
+      this.all_fourni();
+       this.closeModal();
 
-  this.closeModal();
+    }, 1000);
+  setTimeout(() => {
+    this.message_visible=false;
+  }, 5000);
+
+  
 
 }
 update(){
   this.shared.update_fourni(this.update_fourni).subscribe(
     () => {
       // User deleted successfully, perform any necessary actions
-      this.all_fourni();
-
+      this.message="Le fournisseur a été bien modifié";
       console.log('Fournisseur updated successfully!');
 
     },
     (error) => {
       // Handle the error case
+      this.message="Le fournisseur n'a pas été bien modifié";
       console.error('Error updating fournisseur:', error);
     }
   )
-  this.all_fourni();
+  setTimeout(() => {
+    this.message_visible=true;
+    this.all_fourni();
+     this.closeModal2();
 
-  this.closeModal2();
+  }, 1000);
+setTimeout(() => {
+  this.message_visible=false;
+}, 5000);
 
 }
 delete(){
   this.shared.delete_fourni(this.id_delete).subscribe(
     () => {
       // User deleted successfully, perform any necessary actions
-      this.all_fourni();
-      this.all_fourni();
+
+      this.message="Le fournisseur a été bien supprimé";
 
       console.log('Fournisseur deleted successfully!');
 
@@ -149,11 +169,19 @@ delete(){
     (error) => {
       // Handle the error case
       console.error('Error deleting fournisseur:', error);
+      this.message="Le fournisseur n'a pas été bien supprimé";
+
     }
   )
-  this.all_fourni();
+  setTimeout(() => {
+    this.message_visible=true;
+    this.all_fourni();
+     this.closeModal3();
 
-  this.closeModal3();
+  }, 1000);
+setTimeout(() => {
+  this.message_visible=false;
+}, 5000);
 }
 achat : any[] = []
 by_fourni(nom : string){
