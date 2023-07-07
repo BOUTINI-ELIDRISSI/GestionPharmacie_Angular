@@ -45,6 +45,6 @@ export class MenuPharComponent implements OnInit{
   this.operationOptionsVisible = !this.operationOptionsVisible;
   }
   log_out(){
-    //this.router.navigate (['/login'])
+    this.router.navigate (['/login'])
   }
 }

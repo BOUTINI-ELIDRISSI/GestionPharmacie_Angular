@@ -172,7 +172,7 @@
               <div class="name-field">
                   <p> <span style="color: blue;font-weight: 500;">Description </span><br>
                   <span style="margin-left: 50px;">{{info_med.description}}</span></p>
-                   <span style="color: blue;font-weight: 500;">Maladies </span>
+                   <span style="color: blue;font-weight: 500;">Interdit au etat: </span>
                     <ul *ngFor="let item of info_med.maladies">
                       <li>{{item}}</li>
                     </ul>
@@ -204,7 +204,7 @@
                   <td>{{item.libelle}}</td>
                   <td>{{item.ordonnance}}</td>
                   <td> 
-                    <span [routerLink]="['/menu-phar/operations', item.libelle]" ><img src="assets/images/arrows.png" alt=""></span>
+                    <span [routerLink]="['/menu/operations', item.libelle]" ><img src="assets/images/arrows.png" alt=""></span>
                     <span (click)="openModalinfo(item)"><img src="assets/images/about.png" alt=""></span>
                     <span  id="openModalBtn2" (click)="openModal2(item)"><img src="assets/images/implement.png" alt=""></span>
 

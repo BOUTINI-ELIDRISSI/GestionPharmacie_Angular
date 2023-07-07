@@ -78,7 +78,7 @@
            <tr *ngFor="let item of stock | slice:0:3" >
             
               <td>{{item.medicament_Libelle}}</td>
-              <td>{{item.date_expiration}}</td>
+              <td>{{item.date_expiration | date:'yyyy-MM-dd'}}</td>
               <td>{{item.fournisseur}}</td>
               <td>{{item.qte}}</td>
               <td> <span class="dtl" routerLink="/menu-phar/stock" ><img src="assets/images/about.png" alt=""></span> </td>

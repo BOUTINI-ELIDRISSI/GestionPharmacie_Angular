@@ -47,14 +47,14 @@
         <tr>
           <td >
             <div class="txt_field" >
-              <input type="text" [(ngModel)]="client.adresse"  name="email" required>
+              <input type="text" [(ngModel)]="client.adresse"  name="add" required>
                 <span></span>
                 <label>Adresse</label>
             </div>
           </td>
           <td >
             <div class="txt_field" style="margin-left:100px">
-              <input type="text" [(ngModel)]="client.tele"  name="email" required>
+              <input type="text" [(ngModel)]="client.tele"  name="tele" required>
                 <span></span>
                 <label>Telephone</label>
             </div>
@@ -69,10 +69,9 @@
           </td>
           <td >
             <div class="txt_field" style="margin-left:100px">
-              <input type="password" [(ngModel)]="client.mot_de_passe"  name="password" required>
+              <input type="password" [(ngModel)]="client.mot_de_passe"  name="password2" required>
               <span></span>
               <label>Confirmer le mot de passe</label>
-             <p>{{id}}</p>
             </div>
           </td>
         </tr>

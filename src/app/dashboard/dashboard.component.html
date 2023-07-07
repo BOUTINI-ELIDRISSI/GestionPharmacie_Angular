@@ -125,7 +125,7 @@
 <table>
   <tr style="color: #0b159e;font-weight:500; font-size: 18px;">
     <td style="position: relative;left: 40px;">Etat de stock</td>
-    <td style="position: relative;left: 100px;">Commands</td>
+    <td style="position: relative;left: 100px;">Commandes en ligne</td>
   </tr>
   <tr>
     <td style="position: relative;left: 20px; background-color: white; padding: 20px; border-radius: 10px;">
@@ -145,7 +145,7 @@
            <tr *ngFor="let item of stock | slice:0:3" >
             
               <td>{{item.medicament_Libelle}}</td>
-              <td>{{item.date_expiration}}</td>
+              <td>{{item.date_expiration | date:'yyyy-MM-dd' }}</td>
               <td>{{item.fournisseur}}</td>
               <td>{{item.qte}}</td>
               <td> <span class="dtl" routerLink="/menu/stock"><img src="assets/images/about.png" alt=""></span> </td>
@@ -177,12 +177,12 @@
             Date&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
           Prix&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
           Client &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-           Confirmer   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <br> 
+           Confirmer <hr>  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <br> 
         <span class="opt" *ngFor="let item of cmd" >
           {{ item.code}}&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-          {{item.date_Cmd | date:'yyyy-MM-dd'}}&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-           {{ item.prix_total}}&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-           {{item.client.nom}} &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          {{item.date_Cmd | date:'yyyy-MM-dd'}}&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           {{ item.prix_total}}&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+           {{item.client.nom}} &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            <img style="cursor: pointer;" id="openModalBtn" (click)="openModal(item.code)"  src="assets/images/fact.png" alt=""> <br>
         </span>
         

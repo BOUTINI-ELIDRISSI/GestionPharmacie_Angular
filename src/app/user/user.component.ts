@@ -176,7 +176,7 @@ export class UserComponent implements OnInit  {
     this.shared.update_user(this.update_user).subscribe(
       () => {
         // User deleted successfully, perform any necessary actions
-        this.message="Le role "+this.update_user.nom+" a été bien modifié";
+        this.message="Le role de "+this.update_user.nom+" a été bien modifié";
 
         console.log('User updated successfully!');
       },
